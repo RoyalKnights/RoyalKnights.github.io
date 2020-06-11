@@ -1,0 +1,1964 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">Vue教程 | RoyalKnights</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "ロイヤルナイツ皇家小骑士";
+  mashiro_option.author_name = "皇家小骑士";
+  mashiro_option.site_url = "";
+  mashiro_option.v_appId = "cizX6JyUwSbQtAaLDNFyacCr-gzGzoHsz";
+  mashiro_option.v_appKey = "EW08QRUzIBGQ46OIYIjbnejX";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/sy.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('IE浏览器还未适配哦');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dim">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="">
+          <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>堵上皇家骑士的无上荣耀</p>
+        <div class="top-social_v2">
+          <li id="bg-pre" style="display: none;">
+            <img class="flipx">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/RoyalKnights" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://blog.csdn.net/qq_41866776" target="_blank" class="social-github" title="csdn">
+                    <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/csdn.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next" style="display: none;">
+            <img src="">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive" style="display: none;">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">ロイヤルナイツ</span>
+            <span class="shironeko">皇家小骑士</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <!-- <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div> -->
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-home faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-tada" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/qd/">
+                          <i class="fa fa-html5" aria-hidden="true"></i>
+                          前端
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/ht/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          后台
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/fwd/">
+                          <i class="fa fa-server" aria-hidden="true"></i>
+                          服务端
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/qt/">
+                          <i class="fa fa-map-o" aria-hidden="true"></i>
+                          其他
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-shake" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-tada" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover08.jpg);" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover08.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      Vue教程</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">皇家小骑士</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2019-8-5<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="Vue安装与使用"><a href="#Vue安装与使用" class="headerlink" title="Vue安装与使用"></a>Vue安装与使用</h1><p>1.使用cdn</p>
+<pre><code class="html">&lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+or
+&lt;script src=&quot;https://unpkg.com/vue/dist/vue.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>2.官网下载<br><a href="https://vuejs.org/v2/guide/installation.html" target="_blank" rel="noopener">进入英文官网</a><br><img src="https://img-blog.csdnimg.cn/20190621102352813.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODY2Nzc2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<ul>
+<li>第一个为开发版本，包含完整的警告和调试模式</li>
+<li>第二个为生产版本，压缩了代码，删除了警告</li>
+</ul>
+<p>根据自己的需求下载合适的版本，需要注意的是中文的官网点击下载出现的是源码<br>在html文件中用script标签直接引入Vue就可使用</p>
+<h1 id="Vue起步"><a href="#Vue起步" class="headerlink" title="Vue起步"></a>Vue起步</h1><h2 id="Vue基本结构"><a href="#Vue基本结构" class="headerlink" title="Vue基本结构"></a>Vue基本结构</h2><p>每个 Vue 应用都需要通过实例化 Vue 来实现</p>
+<blockquote>
+<p>var vm = new Vue()</p>
+</blockquote>
+<p>Vue构造器基本的参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>el</td>
+<td>表示当前new的这个vue的实例，即要控制哪个区域</td>
+</tr>
+<tr>
+<td>data</td>
+<td>用于定义属性，当属性改变时，html的内容也发生改变，不需要手动操作DOM元素</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>用于定义函数</td>
+</tr>
+</tbody>
+</table>
+<p>html代码</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;p&gt;{{msg}}&lt;/p&gt;
+    &lt;p&gt;{{show()}}&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<p>js代码</p>
+<pre><code class="js">var vm=new Vue({
+    el:&quot;#app&quot;,
+    data:{
+        msg:&#39;Hello&#39;
+    },
+    methods:{
+        show:function(){
+            return &#39;World&#39;
+        }
+    }    
+})
+</code></pre>
+<p>输出结果：<br><img src="https://img-blog.csdnimg.cn/20190621110048450.png" alt="在这里插入图片描述"></p>
+<h2 id="Vue基本指令"><a href="#Vue基本指令" class="headerlink" title="Vue基本指令"></a>Vue基本指令</h2><h3 id="123-123-nbsp-125-125-和v-cloak"><a href="#123-123-nbsp-125-125-和v-cloak" class="headerlink" title="&#123;&#123;&nbsp;&#125;&#125;和v-cloak"></a>&#123;&#123;&nbsp;&#125;&#125;和v-cloak</h3><p>&#123;&#123;&nbsp;&#125;&#125;插值表达式的作用：用于输出对象属性和函数返回值<br>v-cloak作用：解决插值表达式闪烁的问题，即在为了防止出现Vue的变量名，在DOM染完成后才显示<br>用法：<br>html:</p>
+<pre><code class="html">&lt;p v-cloak&gt;{{msg}}&lt;/p&gt;
+</code></pre>
+<p>css</p>
+<pre><code class="css">[v-cloak]{
+     display: none;
+}
+</code></pre>
+<h3 id="v-text-和-v-html"><a href="#v-text-和-v-html" class="headerlink" title="v-text 和 v-html"></a>v-text 和 v-html</h3><p>默认的v-text是没有闪烁的，和插值表达式的不同是v-text会覆盖元素中原本的内容，但是插值表达式只会替换自己的占位符，而不会把整个元素的内容清空</p>
+<pre><code class="html">       &lt;p v-text=&quot;msg&quot;&gt;haha&lt;/p&gt;
+</code></pre>
+<p>  输出结果：Hello<br> 使用 v-html 指令用于输出 html 代码    </p>
+<h3 id="v-bind-和-v-on"><a href="#v-bind-和-v-on" class="headerlink" title="v-bind 和 v-on"></a>v-bind 和 v-on</h3><p>v-bind用于绑定属性，简写 :<br>v-on用于绑定方法，简写 @<br>代码示例</p>
+<pre><code class="html">    &lt;div id=&quot;app&quot;&gt;
+            &lt;input type=&quot;text&quot; v-bind:value=&quot;val&quot;/&gt;
+            &lt;br/&gt;
+            &lt;span v-on:mouseover=&quot;show()&quot;&gt;鼠标移到这&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;script&gt;
+        var vm = new Vue({
+            el: &quot;#app&quot;,
+            data: {
+                val:&quot;这里绑定了输入框的值&quot;
+            },
+            methods: {
+                show: function() {
+                    alert(&quot;移到这了！&quot;)
+                }
+            }
+        })
+    &lt;/script&gt;
+</code></pre>
+<p>  输出结果：<br>  <img src="https://img-blog.csdnimg.cn/2019062309554384.png" alt="在这里插入图片描述"></p>
+<h3 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a>v-model</h3><p>v-model 指令用来在 input、select、textarea、checkbox、radio 等表单控件元素上创建双向数据绑定，根据表单上的值，自动更新绑定的元素的值。</p>
+<pre><code class="html">  &lt;div id=&quot;app&quot;&gt;
+        &lt;p&gt;{{msg}}&lt;/p&gt;
+        &lt;input v-model=&quot;msg&quot;&gt;
+  &lt;/div&gt;
+  &lt;script&gt;
+        var vm = new Vue({
+            el: &quot;#app&quot;,
+            data: {
+                msg: &quot;绑定&quot;
+            }
+        })
+    &lt;/script&gt;
+</code></pre>
+<p><a href="https://cn.vuejs.org/v2/guide/forms.html" target="_blank" rel="noopener">查看更多示例</a></p>
+<h2 id="Vue绑定样式"><a href="#Vue绑定样式" class="headerlink" title="Vue绑定样式"></a>Vue绑定样式</h2><p>例:</p>
+<pre><code class="css">.color{
+    color: #ffffff;
+}
+.bkcolor{
+    background-color: #ff0000;
+
+.size{
+    font-size: 20px;
+}
+</code></pre>
+<p>:class为v-bind:class的简写<br>1.使用数组绑定</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;h1 :class=&quot;[&#39;color&#39;,&#39;bkcolor&#39;,&#39;size&#39;]&quot;&gt;这是一个用Vue绑定样式的标题&lt;/h1&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        //也可将数组的内容写在data域里
+    })
+&lt;/script&gt;
+</code></pre>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20190623101329797.png" alt="在这里插入图片描述"><br>2.数组中使用三元表达式或者镶嵌对象</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;h1 :class=&quot;[flag?&#39;color&#39;:&#39;&#39;,&#39;bkcolor&#39;,&#39;size&#39;]&quot;&gt;这是一个用Vue绑定样式的标题1&lt;/h1&gt;
+    &lt;h1 :class=&quot;[&#39;color&#39;,&#39;bkcolor&#39;,{&#39;size&#39;:flag}]&quot;&gt;这是一个用Vue绑定样式的标题2&lt;/h1&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data:{
+            flag:false
+            //也可将数组内容写在data区域
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20190623101836757.png" alt="在这里插入图片描述"><br>3.使用对象</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;h1 :class=&quot;h_class&quot;&gt;这是一个用Vue绑定样式的标题&lt;/h1&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data:{
+            h_class:{
+                color:true,
+                bkcolor:true,
+                size:false
+            }
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20190623102210816.png" alt="在这里插入图片描述"><br>4.使用:style(v-bind:style)内联样式</p>
+<h2 id="Vue循环指令"><a href="#Vue循环指令" class="headerlink" title="Vue循环指令"></a>Vue循环指令</h2><p>循环使用 v-for 指令<br>1.迭代数组</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;span v-for=&quot;item in arr&quot;&gt;{{item}}&lt;/span&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data:{
+            arr:[1,2,3,4,5]
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/20190623103500108.png" alt="在这里插入图片描述"></p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;span v-for=&quot;item,i in arr&quot;&gt;{{i}}=&gt;{{item}}&amp;nbsp;&lt;/span&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data:{
+            arr:[1,2,3,4,5]
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<p>结果：<br><img src="https://img-blog.csdnimg.cn/2019062310361029.png" alt="在这里插入图片描述"><br>2.迭代对象中的属性</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;span v-for=&quot;item in arr&quot;&gt;{{item.id}}=&gt;{{item.name}}&amp;nbsp;&lt;/span&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data:{
+            arr:[
+                {id:1,name:&#39;ls1&#39;},
+                {id:2,name:&#39;ls2&#39;},
+                {id:2,name:&#39;ls3&#39;}
+            ]
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20190623104154310.png" alt="在这里插入图片描述"></p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;span v-for=&quot;item,i in arr&quot;&gt;{{i}}=&gt;{{item.id}}=&gt;{{item.name}}&amp;nbsp;&lt;/span&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data:{
+            arr:[
+                {id:1,name:&#39;ls1&#39;},
+                {id:2,name:&#39;ls2&#39;},
+                {id:2,name:&#39;ls3&#39;}
+            ]
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20190623104231158.png" alt="在这里插入图片描述"></p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;span v-for=&quot;val,key in obj&quot;&gt;{{key}}=&gt;{{val}}&amp;nbsp;&lt;/span&gt;
+    &lt;!--可以有第三个值，索引--&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data:{
+            obj:{
+                id:123456,
+                name:&quot;zs&quot;,
+                sex:&quot;M&quot;
+            }
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20190623104626985.png" alt="在这里插入图片描述"><br>3.迭代数字</p>
+<p>迭代数字从1开始</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;span v-for=&quot;count in 5&quot;&gt;{{count}}&lt;/span&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data:{}
+    })
+&lt;/script&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20190623104834158.png" alt="在这里插入图片描述"></p>
+<h2 id="Vue条件语句"><a href="#Vue条件语句" class="headerlink" title="Vue条件语句"></a>Vue条件语句</h2><p>v-if：每次都会重新创建或者删除元素<br>v-show：不会重新进行对DOM删除或者创建，只是切换了元素的display:none的属性<br>v-if有更高的切换消耗v-show有更高的初始渲染消耗，因此如果需要频繁切换v-show较好，如果运行条件不大可能改变v-if更好</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;span v-if=&quot;hasinfor&quot;&gt;您已登陆&lt;/span&gt;
+    &lt;!--v-else-if用于多重判断--&gt;
+    &lt;span v-else=&quot;hasinfor&quot;&gt;请登录登陆&lt;/span&gt;
+    &lt;span v-show=&quot;hasinfor&quot;&gt;您已登陆&lt;/span&gt;
+    &lt;span v-show=&quot;!hasinfor&quot;&gt;请登录登陆&lt;/span&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data:{
+            hasinfor:false
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/2019062311004630.png" alt="在这里插入图片描述"></p>
+<h2 id="Vue过滤器"><a href="#Vue过滤器" class="headerlink" title="Vue过滤器"></a>Vue过滤器</h2><p>可被用作一些常见文本格式化，可在mustachc插值和v-bind表达式<br>过滤器调用格式</p>
+<pre><code class="html">{{name|过滤器名称}}
+</code></pre>
+<p>全局过滤器的使用</p>
+<pre><code class="js">Vue.filter(&#39;过滤器名称&#39;,function(){})
+</code></pre>
+<p>私有过滤器的使用</p>
+<pre><code class="js">filters:{
+    过滤器名称:function(){}
+}
+</code></pre>
+<p>例子：</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;p&gt;{{msg|msgFormat}}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    Vue.filter(&#39;msgFormat&#39;,function(msg){
+        return msg.replace(&#39;邪恶&#39;,&#39;单纯&#39;)
+    })
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data:{
+            msg:&quot;他是一个邪恶的男孩&quot;
+        }
+    })
+&lt;/script&gt;
+/*****私有过滤器的使用方法
+var vm = new Vue({
+    el: &quot;#app&quot;,
+    data:{
+        msg:&quot;他是一个邪恶的男孩&quot;
+    },
+    filters:{
+        msgFormat:function(msg){
+            return msg.replace(&#39;邪恶&#39;,&#39;单纯&#39;)
+        }
+    }
+})
+*****/
+</code></pre>
+<p>输出：他是一个单纯的男孩</p>
+<h2 id="Vue按键修饰符"><a href="#Vue按键修饰符" class="headerlink" title="Vue按键修饰符"></a>Vue按键修饰符</h2><p>Vue 允许为 v-on 在监听键盘事件时添加按键修饰符</p>
+<pre><code class="html">&lt;!--在输入框绑定回车事件submit--&gt;
+&lt;input v-on:keyup.enter=&quot;submit&quot;&gt;
+</code></pre>
+<p>Vue 提供了绝大多数常用的按键码的别名</p>
+<ul>
+<li>enter</li>
+<li>tab</li>
+<li>delete (捕获“删除”和“退格”键)</li>
+<li>esc</li>
+<li>space</li>
+<li>up</li>
+<li>down</li>
+<li>left</li>
+<li>right</li>
+</ul>
+<p>可以通过全局 config.keyCodes 对象自定义按键修饰符别名</p>
+<pre><code class="js">// 可以使用v-on:keyup.f1,112为f1的键码
+Vue.config.keyCodes.f1 = 112
+</code></pre>
+<h2 id="Vue自定义指令"><a href="#Vue自定义指令" class="headerlink" title="Vue自定义指令"></a>Vue自定义指令</h2><p>对普通 DOM 元素进行底层操作，这时候就会用到自定义指令</p>
+<p>自定义指令使用方法：</p>
+<pre><code class="html">v-指令名称
+</code></pre>
+<p>全局自定义指令的注册</p>
+<pre><code class="js">Vue.directive(&#39;指令名称&#39;,{
+    //第二个参数为一个对象，包括不同的钩子函数，常用bind,inserted,update
+    bind:function(){},
+    inserted:function(){},
+    update:function(){}
+})
+</code></pre>
+<p>局部自定义指令的注册</p>
+<pre><code class="js">directives:{
+    指令名称:{
+        bind:function(){},
+        inserted:function(){},
+        update:function(){}
+    }    
+}
+</code></pre>
+<p>例子：</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;p v-color&gt;测试文字&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    Vue.directive(&#39;color&#39;,{
+    bind:function(el){
+        el.style.color=&quot;red&quot;;//el是直接对dom元素进行操作
+        }
+    })
+&lt;/script&gt;
+/*****私有指令的使用方法
+var vm = new Vue({
+    el: &quot;#app&quot;,    
+    data:{},
+    directives:{
+        color:{
+            bind:function(el){
+                el.style.color=&quot;red&quot;;
+            }
+        }
+    }
+})
+*****/
+</code></pre>
+<p>钩子函数<br>|函数名称| 作用 |<br>|–|–|<br>| bind | 只调用一次，指令第一次绑定到元素时调用 |<br>| inserted | 被绑定元素插入父节点时调用 |<br>| update | 所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前 |<br>| componentUpdated | 指令所在组件的 VNode 及其子 VNode 全部更新后调用|<br>| unbind | 只调用一次，指令与元素解绑时调用|</p>
+<p>钩子函数参数- el：指令所绑定的元素，可以用来直接操作 DOM 。</p>
+<ul>
+<li>binding：一个对象，包含以下属性：<ul>
+<li>name：指令名，不包括 v- 前缀。</li>
+<li>value：指令的绑定值，例如：v-my-directive=”1 + 1” 中，绑定值为 2。</li>
+<li>oldValue：指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无论值是否改变都可用。</li>
+<li>expression：字符串形式的指令表达式。例如 v-my-directive=”1 + 1” 中，表达式为 “1 + 1”。</li>
+<li>arg：传给指令的参数，可选。例如 v-my-directive:foo 中，参数为 “foo”。</li>
+<li>modifiers：一个包含修饰符的对象。例如：v-my-directive.foo.bar 中，修饰符对象为 { foo: true, bar: true }。</li>
+</ul>
+</li>
+<li>vnode：Vue 编译生成的虚拟节点。</li>
+<li>oldVnode：上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用。</li>
+</ul>
+<pre><code class="html">&lt;div id=&quot;app&quot; v-demo:foo.a.b=&quot;message&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+    Vue.directive(&#39;demo&#39;, {
+        bind: function(el, binding){
+            el.innerHTML =
+                &#39;name: &#39; + binding.name + &#39;&lt;br&gt;&#39; +
+                &#39;value: &#39; + binding.value + &#39;&lt;br&gt;&#39; +
+                &#39;expression: &#39; + binding.expression + &#39;&lt;br&gt;&#39; +
+                &#39;argument: &#39; + binding.arg + &#39;&lt;br&gt;&#39; +
+                &#39;modifiers: &#39; + JSON.stringify(binding.modifiers) + &#39;&lt;br&gt;&#39; 
+            }
+    })
+    var vm = new Vue({
+        el: &quot;#app&quot;,
+        data: {
+            message:&quot;hello&quot;
+        },
+    })
+&lt;/script&gt;
+</code></pre>
+<p>输出结果：<br><img src="https://img-blog.csdnimg.cn/20190728102304489.png" alt="在这里插入图片描述"></p>
+<h2 id="Vue监听属性"><a href="#Vue监听属性" class="headerlink" title="Vue监听属性"></a>Vue监听属性</h2><p>可以通过 watch 来响应数据的变化<br>格式：</p>
+<pre><code class="js">watch:{
+        监听的属性:function (newvalue,oldvalue) {}        
+}
+</code></pre>
+<p>例子:</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    请输入姓：&lt;input type=&quot;text&quot; v-model=&quot;fistname&quot; /&gt;&lt;br /&gt;
+    请输入名：&lt;input type=&quot;text&quot; v-model=&quot;lastname&quot; /&gt;&lt;br /&gt;
+    姓名：&lt;span&gt;{{fullname}}&lt;/span&gt;
+    &lt;p&gt;{{log}}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        data:{
+            fistname:&#39;&#39;,
+            lastname:&#39;&#39;,
+            fullname:&#39;&#39;,
+            log:&#39;&#39;
+        },
+        watch:{
+            &#39;fistname&#39;:function () {
+                this.fullname=this.fistname+this.lastname;
+            },
+            &#39;lastname&#39;:function () {
+                this.fullname=this.fistname+this.lastname;
+            },
+            &#39;fullname&#39;:function (newname,oldname) {
+                this.log=&#39;您的姓名由&#39;+oldname+&#39;改成&#39;+newname;
+            },
+        }
+    })
+&lt;/script&gt;    
+</code></pre>
+<h2 id="Vue计算属性"><a href="#Vue计算属性" class="headerlink" title="Vue计算属性"></a>Vue计算属性</h2><p>计算属性关键词: computed<br>计算属性的本质就是一个方法，只不过，在使用这些计算属性的时候，是把他们的名称直接当作属性使用，并不会当作方法<br>可以使用 methods 来替代 computed，但是 computed 是基于它的依赖缓存，只有相关依赖发生改变时才会重新取值。而使用 methods ，在重新渲染的时候，函数总会重新调用执行。使用 computed 性能会更好，但不希望缓存，可以使用 methods 属性</p>
+<pre><code class="js">var vue = new Vue({
+    el: &#39;#app&#39;,
+    computed:{
+    }
+})
+</code></pre>
+<h1 id="Vue生命周期"><a href="#Vue生命周期" class="headerlink" title="Vue生命周期"></a>Vue生命周期</h1><p>生命周期钩子=生命周期函数=生命周期事件</p>
+<h2 id="图示："><a href="#图示：" class="headerlink" title="图示："></a>图示：</h2><p><img src="https://img-blog.csdnimg.cn/20190728132431346.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODY2Nzc2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="钩子函数"><a href="#钩子函数" class="headerlink" title="钩子函数"></a>钩子函数</h2><table>
+<thead>
+<tr>
+<th>生命周期钩子</th>
+<th>详情</th>
+<th>应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>beforeCreate</td>
+<td>在实例初始化之后，数据观测(data observer) 和 event/watcher 事件配置之前被调用，不能访问到data以及methods等</td>
+<td>初始化非响应式变量</td>
+</tr>
+<tr>
+<td>created</td>
+<td>实例已经创建完成之后被调用。可访问data以及methods等，未挂载DOM,不能访问$el</td>
+<td>简单的ajax请求以及页面的初始化</td>
+</tr>
+<tr>
+<td>beforeMount</td>
+<td>在挂载开始之前被调用，可访问到$el</td>
+<td></td>
+</tr>
+<tr>
+<td>mounted</td>
+<td>挂载到实例上去之后调用该钩子</td>
+<td>常用于获取VNode信息和操作，ajax请求</td>
+</tr>
+<tr>
+<td>beforeUpdate</td>
+<td>数据更新时调用，发生在虚拟 DOM 重新渲染和打补丁之前</td>
+<td>更新之前访问现有的DOM，手动移除已添加的事件监听器</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>虚拟 DOM 重新渲染和打补丁之后调用</td>
+<td>避免在这个钩子函数中操作数据，可能陷入死循环</td>
+</tr>
+<tr>
+<td>beforeDestroy</td>
+<td>实例销毁之前调用。在这一步，实例仍然完全可用。</td>
+<td>常用于销毁定时器、解绑全局事件、销毁插件对象等操作</td>
+</tr>
+<tr>
+<td>destroyed</td>
+<td>Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Vue-ajax"><a href="#Vue-ajax" class="headerlink" title="Vue ajax"></a>Vue ajax</h1><p>Vue.js 2.0 版本推荐使用 axios 来完成 ajax 请求<br>Axios 是一个基于 Promise 的 HTTP 库，可以用在浏览器和 node.js 中</p>
+<h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h2><p>1.使用cdn</p>
+<pre><code class="html">&lt;script src=&quot;https://unpkg.com/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>2.使用npm</p>
+<pre><code>$ npm install axios
+</code></pre><h2 id="get方法"><a href="#get方法" class="headerlink" title="get方法"></a>get方法</h2><p>示例：</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        mounted() {
+            axios
+                .get(url)//url地址
+                .then(function(response){
+                    console.log(response.data);
+                })//.then为请求数据成功后的函数
+                .catch(function(error) {
+                    console.log(error);
+                });//.catch为请求数据失败后的函数
+        }
+    })
+&lt;/script&gt;    
+</code></pre>
+<p>get传参</p>
+<pre><code class="html">1.在url上拼接参数
+axios
+    .get(url+&#39;?key1=value1&amp;key2=value2&#39;)
+2.使用params传参
+axios
+    .get(url,{
+        params:{
+            key1:value1,
+            key2:value2
+        }
+    })
+</code></pre>
+<h2 id="post方法"><a href="#post方法" class="headerlink" title="post方法"></a>post方法</h2><pre><code class="html">&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        mounted() {
+            axios
+                .post(url)//url地址
+                .then(function(response){
+                    console.log(response.data);
+                })//.then为请求数据成功后的函数
+                .catch(function(error) {
+                    console.log(error);
+                });//.catch为请求数据失败后的函数
+        }
+    })
+&lt;/script&gt;    
+</code></pre>
+<p>post传参</p>
+<pre><code class="html">axios
+    .post(url,{
+        key1:value1,//第一个参数
+        key2:value2//第二个参数
+    })
+</code></pre>
+<h2 id="axios-API"><a href="#axios-API" class="headerlink" title="axios API"></a>axios API</h2><p>可以通过向 axios 传递相关配置来创建请求</p>
+<pre><code class="html">&lt;script&gt;
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        mounted() {
+            axios({
+                    method: &#39;get&#39;,
+                    url:url,
+                    params:{
+                        key:value
+                    }
+                })//config配置，具体见下文
+                .then(function(response){
+                    console.log(response.data);
+                })//.then为请求数据成功后的函数
+                .catch(function(error) {
+                    console.log(error);
+                });//.catch为请求数据失败后的函数
+        }
+    })
+&lt;/script&gt;    
+</code></pre>
+<p>请求方法别名<br>在使用别名方法时， url、method、data 这些属性都不必在配置中指定。</p>
+<pre><code>axios.request(config)
+axios.get(url[, config])
+axios.delete(url[, config])
+axios.head(url[, config])
+axios.post(url[, data[, config]])
+axios.put(url[, data[, config]])
+axios.patch(url[, data[, config]])
+</code></pre><p>例如：</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        mounted() {
+            axios
+                .get(url,{
+                    //此处对config里的参数进行配置
+                    //与请求一起发送的 URL 参数
+                    params:{
+                        key=value
+                    },
+                    //指定请求超时的毫秒数
+                    timeout:1000,
+                })//url地址
+                .then(function(response){
+                    console.log(response.data);
+                })//.then为请求数据成功后的函数
+                .catch(function(error) {
+                    console.log(error);
+                });//.catch为请求数据失败后的函数
+        }
+    })
+&lt;/script&gt;    
+</code></pre>
+<p>axios响应结构</p>
+<pre><code>{
+  // `data` 由服务器提供的响应
+  data: {},
+
+  // `status`  HTTP 状态码
+  status: 200,
+
+  // `statusText` 来自服务器响应的 HTTP 状态信息
+  statusText: &quot;OK&quot;,
+
+  // `headers` 服务器响应的头
+  headers: {},
+
+  // `config` 是为请求提供的配置信息
+  config: {}
+}
+</code></pre><p>默认配置<br>1.默认全局配置</p>
+<pre><code>axios.defaults.baseURL = 主目录url;
+</code></pre><p>2.自定义的实例默认设置</p>
+<pre><code>var instance = axios.create({
+        baseURL: 主目录url,
+        timeout:1000
+    });
+    instance
+        .get(&#39;/下一级目录&#39;)
+
+//修改
+instance.defaults.baseURL = url;
+</code></pre><h2 id="config配置"><a href="#config配置" class="headerlink" title="config配置"></a>config配置</h2><p><a href="https://blog.csdn.net/qq_41866776/article/details/98478632" target="_blank" rel="noopener">点击此处</a></p>
+<h1 id="Vue动画"><a href="#Vue动画" class="headerlink" title="Vue动画"></a>Vue动画</h1><h2 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h2><pre><code class="html">&lt;transtion&gt;
+    &lt;!--变化的DOM--&gt;
+&lt;/transtion&gt;
+</code></pre>
+<h2 id="过渡的类名"><a href="#过渡的类名" class="headerlink" title="过渡的类名"></a>过渡的类名</h2><p>即用相应类名的css控制变化前后以及变化的时长<br><img src="https://img-blog.csdnimg.cn/20190805162755567.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODY2Nzc2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>|类名| 作用 |<br>|–|–|<br>| v-enter | 定义进入过渡的开始状态。在元素被插入之前生效，在元素被插入之后的下一帧移除 |<br>| v-enter-active | 定义进入过渡生效时的状态。在整个进入过渡的阶段中应用，在元素被插入之前生效，在过渡/动画完成之后移除。这个类可以被用来定义进入过渡的过程时间，延迟和曲线函数 |<br>| v-enter-to |  2.1.8版及以上 定义进入过渡的结束状态。在元素被插入之后下一帧生效 (与此同时 v-enter 被移除)，在过渡/动画完成之后移除 |<br>| v-leave | 定义离开过渡的开始状态。在离开过渡被触发时立刻生效，下一帧被移除 |<br>| v-leave-active | 定义离开过渡生效时的状态。在整个离开过渡的阶段中应用，在离开过渡被触发时立刻生效，在过渡/动画完成之后移除。这个类可以被用来定义离开过渡的过程时间，延迟和曲线函数。 |<br>| v-leave-to |  2.1.8版及以上 定义离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 v-leave 被删除)，在过渡/动画完成之后移除 |<br>***如果transition没有指定name属性的值，默认类名为上表的类名，即v-(如v-enter)，如果指定了name的值，则类名为：name的值-(如name=”fade”,类名为fade-enter)<br>例子：<br>css</p>
+<pre><code class="css">/*默认的transition*/
+.v-enter,.v-leave-to{
+    opacity: 0;
+    transform: translateX(100px);
+}
+.v-enter-active,.v-leave-active{
+    transition: all 0.8s linear;
+}
+/*指定name属性的transition*/
+.fade-enter,.fade-leave-to{
+    opacity: 0;
+    transform: translateY(100px);
+}
+.fade-enter-active,.fade-leave-active{
+    transition: all 1s linear;
+}
+</code></pre>
+<p>html</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;div&gt;
+        &lt;input type=&quot;button&quot; value=&quot;h1变化&quot; @click=&quot;flag1=!flag1&quot;/&gt;
+        &lt;transition&gt;
+            &lt;h1 v-if=&quot;flag1&quot;&gt;这是一个可以变化的h1&lt;/h1&gt;
+        &lt;/transtion&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;input type=&quot;button&quot; value=&quot;h2变化&quot; @click=&quot;flag2=!flag2&quot;/&gt;
+        &lt;transition name=&quot;fade&quot;&gt;
+        &lt;h2 v-if=&quot;flag2&quot;&gt;这是一个可以变化的h2&lt;/h2&gt;
+        &lt;/transition&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        data:{
+            flag1:false,
+            flag2:false
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<h2 id="自定义过渡类名"><a href="#自定义过渡类名" class="headerlink" title="自定义过渡类名"></a>自定义过渡类名</h2><p>自定义过渡的类名优先级高于普通的类名，这样就能很好的与第三方（如：animate.css）的动画库结合使用</p>
+<ul>
+<li>enter-class</li>
+<li>enter-active-class</li>
+<li>enter-to-class (2.1.8+)</li>
+<li>leave-class</li>
+<li>leave-active-class</li>
+<li>leave-to-class (2.1.8+)</li>
+</ul>
+<p>:duration用于设置过渡动画时间</p>
+<pre><code class="html">&lt;transition :duration=&quot;800&quot;&gt;...&lt;/transition&gt;
+&lt;transition :duration=&quot;{ enter: 600, leave: 1000 }&quot;&gt;...&lt;/transition&gt;
+</code></pre>
+<p>例如：</p>
+<pre><code class="html">&lt;!--前面引入Animate.css动画库--&gt;
+&lt;div id=&quot;app&quot;&gt;
+    &lt;input type=&quot;button&quot; value=&quot;h1变化&quot; @click=&quot;show=!show&quot;/&gt;
+    &lt;transition 
+    enter-active-class=&quot;bounceIn&quot;
+    leave-active-class=&quot;bounceOut&quot;
+    :duration=&quot;1000&quot;
+    &gt;
+        &lt;h1 v-if=&quot;show&quot;&gt;这是一个使用自定义动画的h1&lt;/h1&gt;
+    &lt;/transtion&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        data:{
+            show:false,
+        }
+    })
+&lt;/script&gt;    
+</code></pre>
+<h2 id="JavaScript-钩子"><a href="#JavaScript-钩子" class="headerlink" title="JavaScript 钩子"></a>JavaScript 钩子</h2><p>html</p>
+<pre><code class="html">&lt;transition
+  v-on:before-enter=&quot;beforeEnter&quot;
+  v-on:enter=&quot;enter&quot;
+  v-on:after-enter=&quot;afterEnter&quot;
+  v-on:enter-cancelled=&quot;enterCancelled&quot;
+
+  v-on:before-leave=&quot;beforeLeave&quot;
+  v-on:leave=&quot;leave&quot;
+  v-on:after-leave=&quot;afterLeave&quot;
+  v-on:leave-cancelled=&quot;leaveCancelled&quot;
+&gt;
+&lt;/transition&gt;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>beforeEnter(el)</td>
+<td>el，表示要执行动画的DOM元素，是个原生的js对象，动画入场之前</td>
+</tr>
+<tr>
+<td>function(el, done)</td>
+<td>动画开始之后的样子，在这可以设置结束状态，done的起始就是afterEnter，done为afterEnter的引用</td>
+</tr>
+<tr>
+<td>afterEnter(el)</td>
+<td>动画完成之后调用</td>
+</tr>
+</tbody>
+</table>
+<p><strong>leave函数类似<br>*</strong>在 enter 和 leave 中必须使用 done 进行回调。否则，它们将被同步调用，过渡会立即完成。<br>***推荐对于仅使用 JavaScript 过渡的元素添加 v-bind:css=”false”，Vue 会跳过 CSS 的检测。这也可以避免过渡过程中 CSS 的影响</p>
+<p>小球移动例子：</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;input type=&quot;button&quot; value=&quot;jump&quot; @click=&quot;show=!show&quot;/&gt;
+    &lt;transition 
+    @before-enter=&quot;beforeEnter&quot;
+    @enter=&quot;enter&quot;
+    @after-enter=&quot;afterEnter&quot;
+    &gt;
+        &lt;div v-if=&quot;show&quot; style=&quot;width: 20px;height: 20px;border-radius: 50%;background: red;&quot;&gt;&lt;/div&gt;
+    &lt;/transtion&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        data:{
+            show:false,
+        },
+        methods:{
+            beforeEnter:function(el){
+                el.style.transform=&quot;translate(0,0)&quot;;
+            },
+            enter:function(el,done){
+                el.offsetWidth;
+                //可以认为el.offsetWidth会强制动画刷新，不加没动画
+                el.style.transform=&quot;translate(150px,450px)&quot;;
+                el.style.transition=&quot;all 1s ease&quot;;
+                done();
+            },
+            afterEnter:function(el){
+                this.show=!this.show;
+            }
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<h2 id="列表过渡"><a href="#列表过渡" class="headerlink" title="列表过渡"></a>列表过渡</h2><p>1.在实现列表过渡的时候，如果需要过渡的元素是通过v-for循环渲染出来的，则使用transition-group包裹<br>2.不同于 transition，transition-group会以一个真实元素呈现，默认为span，可以通过 tag 特性更换为其他元素<br>3.内部元素总是需要提供唯一的 key 属性值</p>
+<p>例子：随机在数组位置中插入一个数字以及随机减少一个数字<br>css</p>
+<pre><code class="css">.num{
+    margin-right: 10px;
+    display: inline-block;
+}
+.num-enter, .num-leave-to{
+    opacity: 0;
+    transform: translateY(20px);
+}
+.num-enter-active, .num-leave-active {
+    transition: all 1s linear;
+}
+</code></pre>
+<p>html</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;input type=&quot;button&quot; value=&quot;Add&quot; @click=&quot;add&quot;/&gt;
+    &lt;input type=&quot;button&quot; value=&quot;remove&quot; @click=&quot;remove&quot;/&gt;
+    &lt;transition-group name=&quot;num&quot; tag=&quot;div&quot;&gt;
+        &lt;span class=&quot;num&quot; v-for=&quot;item in arr&quot; v-bind:key=&quot;item&quot;&gt;{{item}}&lt;/span&gt;
+    &lt;/transition-group&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        data:{
+            arr:[1,2,3,4,5,6,7,8,9],
+            nextnum:10//为了使key唯一,让增加的数字每次都不同,在9之后
+        },
+        methods:{
+            add:function(){
+                var index=Math.floor(Math.random() * this.arr.length);
+                return this.arr.splice(index,0,this.nextnum++);
+            },
+            remove:function(){
+                var index=Math.floor(Math.random() * this.arr.length);
+                return this.arr.splice(index,1);
+            }
+        }
+    })
+&lt;/script&gt;    
+</code></pre>
+<p>上述例子中，添加和移除元素的时候，周围的元素会瞬间移动到他们的新布局的位置，而不是平滑的过渡，为了解决这个问题，则添加下面代码</p>
+<pre><code class="css">/*这两个类需要配合使用，才能让其他元素有动画*/
+.num-move{
+    transition: all 1s linear;
+}
+.num-leave-active{
+    position: absolute;
+}
+</code></pre>
+<h2 id="过渡模式"><a href="#过渡模式" class="headerlink" title="过渡模式"></a>过渡模式</h2><p>transition的默认行为是进入和离开同时发生，可以通过vue提供的过渡模式让进入和离开分别进行<br>格式：</p>
+<pre><code>&lt;transitio mode=&quot;out-in&quot;&gt;
+&lt;/transition&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>in-out</td>
+<td>新元素先进行过渡，完成之后当前元素过渡离开</td>
+</tr>
+<tr>
+<td>out-in</td>
+<td>当前元素先进行过渡，完成之后新元素过渡进入</td>
+</tr>
+</tbody>
+</table>
+<h2 id="组件过渡"><a href="#组件过渡" class="headerlink" title="组件过渡"></a>组件过渡</h2><p><a href="#guodu">了解组件知识点击此处直接跳转</a></p>
+<h1 id="Vue组件"><a href="#Vue组件" class="headerlink" title="Vue组件"></a>Vue组件</h1><p>组件可以扩展 HTML 元素，封装可重用的代码。组件化是从UI的角度进行划分，前端的组件化，方便UI组件的重用</p>
+<h2 id="全局组件注册"><a href="#全局组件注册" class="headerlink" title="全局组件注册"></a>全局组件注册</h2><p>格式：</p>
+<pre><code class="js">Vue.component(tagName, options)
+</code></pre>
+<p>调用组件的方式</p>
+<pre><code class="html">&lt;tagName&gt;&lt;/tagName&gt;
+</code></pre>
+<p>如果为驼峰命名，则采用将大写改小写，两个单词用-分离<br>例：</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;com&gt;&lt;/com&gt;
+    &lt;my-com&gt;&lt;/my-com&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    Vue.component(&#39;com&#39;,{
+        template:&quot;&lt;h1&gt;这是由vue创建的第一个全局组件&lt;/h1&gt;&quot;,
+        //通过template属性指定要展示的HTML结构
+    })
+    Vue.component(&#39;myCom&#39;,{
+        template:&quot;&lt;h1&gt;这是由vue创建的第二个全局组件&lt;/h1&gt;&quot;,
+        //调用采用my-com的标签
+    })
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        data:{}
+    })
+&lt;/script&gt;
+</code></pre>
+<p>**需要注意的是，template属性指向的模板内容必须有且只有唯一的根元素</p>
+<h2 id="局部组件注册"><a href="#局部组件注册" class="headerlink" title="局部组件注册"></a>局部组件注册</h2><p>格式：</p>
+<pre><code class="js">components:{
+    tagName: options
+}
+</code></pre>
+<p>例子</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;my-com2&gt;&lt;/my-com2&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        data:{},
+        components:{
+            myCom2:{
+                template:&quot;&lt;h1&gt;这是由vue创建的私有组件&lt;/h1&gt;&quot;
+            }
+        }
+    })
+&lt;/script&gt;    
+</code></pre>
+<h2 id="外部定义"><a href="#外部定义" class="headerlink" title="外部定义"></a>外部定义</h2><p>通过template标签可在外面定义的组件结构后调用</p>
+<pre><code class="html">&lt;template id=&quot;t_com&quot;&gt;
+    &lt;h1&gt;这是通过template元素在外面定义的组件结构&lt;/h1&gt;
+&lt;/template&gt;
+&lt;div id=&quot;app&quot;&gt;
+    &lt;t-com&gt;&lt;/t-com&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    Vue.component(&#39;tCom&#39;,{
+        template:&#39;#t_com&#39;
+    })
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        data:{}
+    })
+&lt;/script&gt;    
+</code></pre>
+<h2 id="组件的数据和方法"><a href="#组件的数据和方法" class="headerlink" title="组件的数据和方法"></a>组件的数据和方法</h2><p>1.组件可以有自己的数据，但是组件中的数据必须为一个方法<br>2.在方法的内部，必须返回一个对象<br>3.调用方式和实例中的data一样<br>例子：计数器</p>
+<pre><code class="html">&lt;template id=&quot;counter&quot;&gt;
+    &lt;div&gt;
+        &lt;input type=&quot;button&quot; value=&quot;+&quot; @click=&quot;add&quot;/&gt;
+        &lt;p&gt;{{count}}&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;div id=&quot;app&quot;&gt;
+    &lt;counter&gt;&lt;/counter&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    Vue.component(&#39;counter&#39;,{
+        template:&#39;#counter&#39;,
+        data:function(){
+            return {
+                count:0
+            }
+        },
+        methods:{
+            add:function(){
+                this.count++
+            }
+        }
+    })
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        data:{},
+    })
+&lt;/script&gt;    
+</code></pre>
+<h2 id="父组件向子组件传值"><a href="#父组件向子组件传值" class="headerlink" title="父组件向子组件传值"></a>父组件向子组件传值</h2><p>使用v-bind 动态绑定 props的值到父组件的数据中。每当父组件的数据变化时，该变化也会传导给子组件，props值为只读</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;com v-bind:parentmsg=&quot;msg&quot;&gt;&lt;/com&gt;
+    &lt;!--parentmsg通过props传递到父组件中被调用，传递的值为msg--&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    Vue.component(&#39;com&#39;,{
+        template:&quot;&lt;h1&gt;这是子组件and{{parentmsg}}&lt;/h1&gt;&quot;,
+        props:[&#39;parentmsg&#39;],
+        //只有通过props数组,子组件才可以调用传递过来的值
+    })
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        data:{
+            msg:&quot;这是父组件的数据&quot;
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<h2 id="子组件向父组件传值"><a href="#子组件向父组件传值" class="headerlink" title="子组件向父组件传值"></a>子组件向父组件传值</h2><p>使用 v-on 绑定自定义事件，使用 $emit(eventName) 触发事件</p>
+<pre><code class="html">&lt;template id=&quot;com&quot;&gt;
+    &lt;input type=&quot;button&quot; value=&quot;点击子组件向父组件传值&quot; @click=&quot;myclick&quot;/&gt;
+&lt;/template&gt;
+&lt;div id=&quot;app&quot;&gt;
+    &lt;!--通过v-on绑定子组件中触发的函数func,交给父组件中的show方法来处理，参数为子组件传递的参数--&gt;
+    &lt;com v-on:func=&quot;show&quot;&gt;&lt;/com&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    //添加子组件的点击事件为myclick,通过myclick触发函数,后面跟要传递的值
+    Vue.component(&#39;com&#39;,{
+        template:&quot;#com&quot;,
+        data(){
+            return{
+                childmsg:&quot;这是子组件的值&quot;
+            }
+        },
+        methods:{
+            myclick:function(){
+                this.$emit(&#39;func&#39;,this.childmsg)
+            }
+        }
+    })
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        methods:{
+            show:function(data){
+                console.log(data)
+            }
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<h2 id="组件切换"><a href="#组件切换" class="headerlink" title="组件切换"></a>组件切换</h2><p>1.使用v-if/v-else进行显示和隐藏</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;a href=&quot;&quot; @click.prevent=&quot;flag=true&quot;&gt;登陆&lt;/a&gt;
+    &lt;a href=&quot;&quot; @click.prevent=&quot;flag=false&quot;&gt;注册&lt;/a&gt;
+    &lt;!--click.prevent阻止默认事件--&gt;
+    &lt;login v-if=&quot;flag&quot;&gt;&lt;/login&gt;
+    &lt;register v-else&gt;&lt;/register&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    Vue.component(&#39;login&#39;,{
+        template:&quot;&lt;h3&gt;登陆组件&lt;/h3&gt;&quot;
+    })
+    Vue.component(&#39;register&#39;,{
+        template:&quot;&lt;h3&gt;注册组件&lt;/h3&gt;&quot;
+    })
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        data:{
+            flag:true
+        },
+    })
+&lt;/script&gt;
+</code></pre>
+<p>2.使用component来展示对应名称的组件，:is属性可以用来指定展示的组件名称，类型为字符串，所以用’ ‘</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;a href=&quot;&quot; @click.prevent=&quot;cname=&#39;login&#39;&quot;&gt;登陆&lt;/a&gt;
+    &lt;a href=&quot;&quot; @click.prevent=&quot;cname=&#39;register&#39;&quot;&gt;注册&lt;/a&gt;
+    &lt;!--click.prevent阻止默认事件--&gt;
+    &lt;component :is=&quot;cname&quot;&gt;&lt;/component&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    Vue.component(&#39;login&#39;,{
+        template:&quot;&lt;h3&gt;登陆组件&lt;/h3&gt;&quot;
+    })
+    Vue.component(&#39;register&#39;,{
+        template:&quot;&lt;h3&gt;注册组件&lt;/h3&gt;&quot;
+    })
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        data:{
+            cname:&#39;login&#39;
+        },
+    })
+&lt;/script&gt;
+</code></pre>
+<h2 id="组件过渡-1"><a href="#组件过渡-1" class="headerlink" title="组件过渡"></a>组件过渡</h2><div id="guodu"></div>
+
+<p>多个组件过渡不需要使用key属性<br>例子：<br>css</p>
+<pre><code class="css">.v-enter,.v-leave-to{
+    transform: translateY(20px);
+    opacity: 0;
+}
+.v-enter-active,.v-leave-active{
+    transition: all 0.5s linear;
+}
+</code></pre>
+<p>html</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;a href=&quot;&quot; @click.prevent=&quot;cname=&#39;login&#39;&quot;&gt;登陆&lt;/a&gt;
+    &lt;a href=&quot;&quot; @click.prevent=&quot;cname=&#39;register&#39;&quot;&gt;注册&lt;/a&gt;
+    &lt;!--click.prevent阻止默认事件--&gt;
+    &lt;transition mode=&quot;out-in&quot;&gt;
+        &lt;component :is=&quot;cname&quot;&gt;&lt;/component&gt;
+    &lt;/transition&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    Vue.component(&#39;login&#39;,{
+        template:&quot;&lt;h3&gt;登陆组件&lt;/h3&gt;&quot;
+    })
+    Vue.component(&#39;register&#39;,{
+        template:&quot;&lt;h3&gt;注册组件&lt;/h3&gt;&quot;
+    })
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        data:{
+            cname:&#39;login&#39;
+        },
+    })
+&lt;/script&gt;
+</code></pre>
+<h1 id="Vue路由"><a href="#Vue路由" class="headerlink" title="Vue路由"></a>Vue路由</h1><p>前端路由：主要通过URL中的hash(#号)来实现不同页面之间的切换，同时hash有个特点，http请求不包含hash相关的内容。这种通过hash改变来切换页面的方式称为前端路由</p>
+<h2 id="安装方法-1"><a href="#安装方法-1" class="headerlink" title="安装方法"></a>安装方法</h2><p>1.使用cdn</p>
+<pre><code class="html">&lt;script src=&quot;https://unpkg.com/vue-router/dist/vue-router.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>2.使用npm</p>
+<pre><code>npm install vue-router
+</code></pre><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>1.创建一个路由对象，VueRouter</p>
+<pre><code class="js">var routerobj=new VueRouter()
+</code></pre>
+<p>2.在路由对象里配置路由规则，routes，每个规则都是一个对象。里面包含两个必须属性<br>1)path，表示监听哪个路由地址。<br>2)component，表示路由是前面所匹配到的path，则component对应哪个组件，component必须是一个模板对象，不能是组件引用的名称。</p>
+<pre><code class="js">var routerobj=new VueRouter({
+    routes:[
+        {path:路由地址,component:组件模板对象}
+    ]
+})
+</code></pre>
+<p>3.将路由规则对象注册到vm实例上，用来监听URL地址的变化，然后展示对应组件的变化</p>
+<pre><code class="js">var vue = new Vue({
+        el: &#39;#app&#39;,
+        router:routerobj
+    })
+</code></pre>
+<p>4.router-view将路由规则匹配到的组件展示到页面</p>
+<pre><code class="html">&lt;router-view&gt;&lt;/router-view&gt;
+</code></pre>
+<p>5.切换方式<br>1)a标签</p>
+<pre><code class="html">&lt;a href=&quot;#/路由地址&quot;&gt;&lt;/a&gt;
+</code></pre>
+<p>注意有#进行hash</p>
+<p>2)router-link</p>
+<pre><code class="html">&lt;router-link to=&quot;/路由地址&quot;&gt;&lt;/router-link&gt;
+</code></pre>
+<p>例子</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;router-link to=&quot;/login&quot;&gt;登陆&lt;/router-link&gt;
+    &lt;router-link to=&quot;/register&quot;&gt;注册&lt;/router-link&gt;
+    &lt;router-view&gt;&lt;/router-view&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var login={
+        template:&#39;&lt;h1&gt;登陆组件&lt;/h1&gt;&#39;
+    }
+    var register={
+        template:&#39;&lt;h1&gt;注册组件&lt;/h1&gt;&#39;
+    }
+    //创建一个路由对象
+    var routerobj=new VueRouter({
+        //配置路由规则
+        routes:[
+            //component必须是一个模板对象
+            {path:&#39;/&#39;,redirect:&#39;/login&#39;},//重定向，默认path为/login
+            {path:&#39;/login&#39;,component:login},
+            {path:&#39;/register&#39;,component:register}
+        ]
+    })
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        router:routerobj
+    })
+&lt;/script&gt;
+</code></pre>
+<p>点击默认URL和点击登陆时<br><img src="https://img-blog.csdnimg.cn/2019081114421866.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODY2Nzc2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>点击注册时<br><img src="https://img-blog.csdnimg.cn/20190811144244389.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODY2Nzc2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>注：可用redirect进行重定向，使默认的URL展示的指定路由地址</p>
+<h2 id="router-link设置"><a href="#router-link设置" class="headerlink" title="router-link设置"></a>router-link设置</h2><p>1.router-link默认渲染成a标签，如需要渲染成其他标签，则在标签内添加tag属性，指向设置的标签</p>
+<pre><code class="html">&lt;router-link to=&quot;/路由地址&quot; tag=&quot;li&quot;&gt;&lt;/router-link&gt;
+</code></pre>
+<p>2.设置选中样式<br>1)默认选中路由标签的类名为router-link-active，只需修改这个类的样式，即可设置选中样式<br>2)在路由对象中添加linkActiveClass属性，设置对应的类</p>
+<pre><code class="js">var routerobj=new VueRouter({
+    routes:[],
+    linkActiveClass:&#39;myClass&#39;
+})
+</code></pre>
+<h2 id="路由传参"><a href="#路由传参" class="headerlink" title="路由传参"></a>路由传参</h2><p>1.query方式<br>不需要修改path属性，传参的格式为在连接地址后加?key=value，调用<code>$router.query.key</code><br>2.params方式<br>在path属性后添加/:key，传参的格式为在连接地址后加/value，调用<code>$router.params.key</code></p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;router-link to=&quot;/login?id=11&amp;name=hhh&quot;&gt;登陆&lt;/router-link&gt;
+    &lt;router-link to=&quot;/register/11/hh&quot;&gt;注册&lt;/router-link&gt;
+    &lt;router-view&gt;&lt;/router-view&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var login={
+        template:&#39;&lt;h1&gt;登陆组件&lt;br/&gt;id:{{$route.query.id}}&lt;br/&gt;name:{{$route.query.name}}&lt;/h1&gt;&#39;
+    }
+    var register={
+        template:&#39;&lt;h1&gt;注册组件&lt;br/&gt;id:{{$route.params.id}}&lt;br/&gt;name:{{$route.params.name}}&lt;/h1&gt;&#39;
+    }
+    var routerobj=new VueRouter({
+        routes:[
+            {path:&#39;/login&#39;,component:login},
+            {path:&#39;/register/:id/:name&#39;,component:register}
+        ]
+    })
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        router:routerobj
+    })
+&lt;/script&gt;
+</code></pre>
+<h2 id="路由的嵌套"><a href="#路由的嵌套" class="headerlink" title="路由的嵌套"></a>路由的嵌套</h2><p>在路由匹配规则中用children属性即可实现组件的嵌套</p>
+<pre><code class="html">&lt;!-- 用户组件acc里面包含登陆注册组件以及相应的显示 --&gt;
+&lt;template id=&quot;acc&quot;&gt;
+    &lt;div&gt;
+        &lt;h1&gt;这里是用户界面&lt;/h1&gt;
+        &lt;!-- 包含父组件路径 --&gt;
+        &lt;router-link to=&quot;/acc/login&quot;&gt;登陆&lt;/router-link&gt;
+        &lt;router-link to=&quot;/acc/register&quot;&gt;注册&lt;/router-link&gt;
+        &lt;router-view&gt;&lt;/router-view&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;div id=&quot;app&quot;&gt;
+    &lt;router-link to=&quot;/acc&quot;&gt;用户界面&lt;/router-link&gt;
+    &lt;router-view&gt;&lt;/router-view&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var login={
+        template:&#39;&lt;h1&gt;登陆组件&lt;/h1&gt;&#39;
+    }
+    var register={
+        template:&#39;&lt;h1&gt;注册组件&lt;/h1&gt;&#39;
+    }
+    var acc={
+        template:&#39;#acc&#39;
+    }
+    var routerobj=new VueRouter({
+        routes:[
+            {
+                path:&#39;/acc&#39;,
+                component:acc,
+                //不需要/,否则将以根目录开头
+                children:[
+                    {path:&#39;login&#39;,component:login},
+                    {path:&#39;register&#39;,component:register}
+                ]
+            }
+        ]
+    })
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        router:routerobj
+    })
+&lt;/script&gt;
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20190811155221618.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODY2Nzc2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="命名视图"><a href="#命名视图" class="headerlink" title="命名视图"></a>命名视图</h2><p>为了同级展示多个视图，则使用命名视图，在路由配置中，使用components配置多个路由视图，name属性对应 router-view的name属性对应components配置对象的名字，如果 router-view 没有设置名字，那么默认为 default</p>
+<pre><code class="html">&lt;div id=&quot;app&quot;&gt;
+    &lt;router-view&gt;&lt;/router-view&gt;
+    &lt;router-view name=&#39;a&#39;&gt;&lt;/router-view&gt;
+    &lt;router-view name=&#39;b&#39;&gt;&lt;/router-view&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var com1={
+        template:&#39;&lt;h1&gt;组件1&lt;/h1&gt;&#39;
+    }
+    var com2={
+        template:&#39;&lt;h1&gt;组件2&lt;/h1&gt;&#39;
+    }
+    var com3={
+        template:&#39;&lt;h1&gt;组件3&lt;/h1&gt;&#39;
+    }
+    var routerobj=new VueRouter({
+        routes:[
+            {
+                path:&#39;/&#39;,
+                components:{
+                    default:com1,
+                    a:com2,
+                    b:com3
+                }
+            }
+        ]
+    })
+    var vue = new Vue({
+        el: &#39;#app&#39;,
+        router:routerobj
+    })
+&lt;/script&gt;    
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/zfb.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/wx.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div> -->
+        <!-- <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer> -->
+        <!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2019/08/20/qd/1566232486/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover09.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover09.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                less基本语法</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2019/07/21/qd/1563698753/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover07.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover07.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                html+css实现多种动态相册</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "cizX6JyUwSbQtAaLDNFyacCr-gzGzoHsz",
+        appKey: "EW08QRUzIBGQ46OIYIjbnejX",
+        path: window.location.pathname,
+        placeholder: "虚空之席..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg" itemprop="image" alt="皇家小骑士" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">皇家小骑士</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <!-- <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div> -->
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 皇家小骑士<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2019</p>
+    </div>
+    <div class="footer-device">
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">皇家小骑士
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "",
+        "name": "",
+        "live": "close"
+      },
+      "windowheight": "fixed",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  } else {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "",
+        "name": "",
+        "live": "open"
+      },
+      "windowheight": "auto",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  }
+  /* ]]> */
+</script>
+<script>
+  $(document).ready(function () {
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc').offset().top - 95;
+      window.onscroll = function () {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+</script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <!-- <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div> -->
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">ロイヤルナイツ皇家小骑士</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="https://github.com/RoyalKnights" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://blog.csdn.net/qq_41866776" class="fa fa-code" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-home faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-tada" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/qd/">
+                  <i class="fa fa-html5" aria-hidden="true"></i>
+                  前端
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/ht/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  后台
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/fwd/">
+                  <i class="fa fa-server" aria-hidden="true"></i>
+                  服务端
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/qt/">
+                  <i class="fa fa-map-o" aria-hidden="true"></i>
+                  其他
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-shake" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-tada" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 royalknights</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id=""
+
+    server=""
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":145,"height":315},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
+</html>

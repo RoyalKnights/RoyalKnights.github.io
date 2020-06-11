@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">html+css实现多种动态相册 | RoyalKnights</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "ロイヤルナイツ皇家小骑士";
+  mashiro_option.author_name = "皇家小骑士";
+  mashiro_option.site_url = "";
+  mashiro_option.v_appId = "cizX6JyUwSbQtAaLDNFyacCr-gzGzoHsz";
+  mashiro_option.v_appKey = "EW08QRUzIBGQ46OIYIjbnejX";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/sy.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('IE浏览器还未适配哦');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dim">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="">
+          <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>堵上皇家骑士的无上荣耀</p>
+        <div class="top-social_v2">
+          <li id="bg-pre" style="display: none;">
+            <img class="flipx">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/RoyalKnights" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://blog.csdn.net/qq_41866776" target="_blank" class="social-github" title="csdn">
+                    <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/csdn.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next" style="display: none;">
+            <img src="">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive" style="display: none;">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">ロイヤルナイツ</span>
+            <span class="shironeko">皇家小骑士</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <!-- <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div> -->
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-home faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-tada" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/qd/">
+                          <i class="fa fa-html5" aria-hidden="true"></i>
+                          前端
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/ht/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          后台
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/fwd/">
+                          <i class="fa fa-server" aria-hidden="true"></i>
+                          服务端
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/qt/">
+                          <i class="fa fa-map-o" aria-hidden="true"></i>
+                          其他
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-shake" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-tada" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover07.jpg);" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover07.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      html+css实现多种动态相册</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">皇家小骑士</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2019-7-21<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="电子相册"><a href="#电子相册" class="headerlink" title="电子相册"></a>电子相册</h1><p>原理：由a标签的锚点进行图片上的切换，左侧大图用verflow: hidden进行隐藏，右侧小图用overflow: scroll进行显示。<br>HTML：</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../css/ElectronAlbum.css&quot;/&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;box&quot;&gt;
+            &lt;h1&gt;电子相册&lt;/h1&gt;
+            &lt;ul class=&quot;list1&quot;&gt;
+                &lt;li&gt;&lt;img src=&quot;../img/danji.jpg&quot; id=&quot;img1&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;img src=&quot;../img/dianwei.jpg&quot; id=&quot;img2&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;img src=&quot;../img/diaochan.jpg&quot; id=&quot;img3&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;img src=&quot;../img/lanlinwang.jpg&quot; id=&quot;img4&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;img src=&quot;../img/luban.jpg&quot; id=&quot;img5&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;img src=&quot;../img/zhaoyun.jpg&quot; id=&quot;img6&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;img src=&quot;../img/zhugeliang.jpg&quot; id=&quot;img7&quot;&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;img src=&quot;../img/kai.jpg&quot; id=&quot;img8&quot;&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;ul class=&quot;list2&quot;&gt;
+                &lt;li&gt;&lt;a href=&quot;#img1&quot;&gt;&lt;img src=&quot;../img/danji.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#img2&quot;&gt;&lt;img src=&quot;../img/dianwei.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#img3&quot;&gt;&lt;img src=&quot;../img/diaochan.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#img4&quot;&gt;&lt;img src=&quot;../img/lanlinwang.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#img5&quot;&gt;&lt;img src=&quot;../img/luban.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#img6&quot;&gt;&lt;img src=&quot;../img/zhaoyun.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#img7&quot;&gt;&lt;img src=&quot;../img/zhugeliang.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#img8&quot;&gt;&lt;img src=&quot;../img/kai.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>CSS</p>
+<pre><code class="css">* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #333;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    color: #FFFFFF;
+}
+.box{
+    width: 660px;
+    height: 320px;
+    margin: 200px auto;
+    border: 5px solid white;
+    box-shadow: 0px 0px 10px black;
+}
+.list1,.list2{
+    float: left;
+}
+.list1{
+    width: 480px;
+    height: 270px;
+    overflow: hidden;
+}
+.list2{
+    width: 180px;
+    height: 270px;
+    overflow: scroll;
+}
+.list1 img{
+    width: 480px;
+    height: 270px;
+}
+.list2 img{
+    width: 160px;
+    height: 90px;
+}
+</code></pre>
+<h1 id="全屏背景切换"><a href="#全屏背景切换" class="headerlink" title="全屏背景切换"></a>全屏背景切换</h1><p>原理：和电子相册类似用a标签进行图片的切换，设置图片原来的位置以及点击a标签后的:target属性，设置动画效果。<br>HTML:</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;FullPhoto&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../css/FullPhoto.css&quot;/&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;box&quot;&gt;
+            &lt;img src=&quot;../img/dianwei.jpg&quot; id=&quot;img1&quot;&gt;
+            &lt;img src=&quot;../img/diaochan.jpg&quot; id=&quot;img2&quot;&gt;
+            &lt;img src=&quot;../img/lanlinwang.jpg&quot; id=&quot;img3&quot;&gt;
+            &lt;img src=&quot;../img/sunshangxiang.jpg&quot; id=&quot;img4&quot;&gt;
+            &lt;img src=&quot;../img/luban.jpg&quot; id=&quot;img5&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;list&quot;&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;#img1&quot;&gt;&lt;img src=&quot;../img/dianwei.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#img2&quot;&gt;&lt;img src=&quot;../img/diaochan.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#img3&quot;&gt;&lt;img src=&quot;../img/lanlinwang.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#img4&quot;&gt;&lt;img src=&quot;../img/sunshangxiang.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#img5&quot;&gt;&lt;img src=&quot;../img/luban.jpg&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>CSS:</p>
+<pre><code class="css">* {
+    margin: 0;
+    padding: 0;
+}
+
+.box {
+    width: 100%;
+    height: 100%;
+}
+
+.box img {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    transition: all 1s linear;
+}
+
+.list {
+    position: absolute;
+    z-index: 999;
+    width: 1000px;
+    height: auto;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.list li {
+    list-style: none;
+    width: 130px;
+    height: 130px;
+    border: 5px solid lightskyblue;
+    float: left;
+    margin-left: 60px;
+    overflow: hidden;
+    border-radius: 50%;
+
+}
+
+.list li img {
+    width: 200%;
+}
+
+.box img:nth-child(1) {
+    opacity: 0;
+    left: -100%;
+}
+
+.box img:nth-child(1):target {
+    z-index: 1;
+    opacity: 1;
+    left: 0;
+}
+
+.box img:nth-child(2) {
+    top: -100%;
+}
+
+.box img:nth-child(2):target {
+    z-index: 1;
+    transform: rotate(360deg);
+    top: 0;
+}
+
+.box img:nth-child(3) {
+    opacity: 0;
+    right: -100%;
+}
+
+.box img:nth-child(3):target {
+    z-index: 1;
+    opacity: 1;
+    right: 0;
+}
+
+.box img:nth-child(4) {
+    bottom: -100%;
+}
+
+.box img:nth-child(4):target {
+    z-index: 1;
+    transform: rotate(360deg);
+    bottom: 0;
+}
+
+.box img:nth-child(5) {
+    opacity: 0;
+}
+
+.box img:nth-child(5):target {
+    z-index: 1;
+    opacity: 1;
+    transform: rotate(360deg);
+}
+</code></pre>
+<h1 id="照片墙"><a href="#照片墙" class="headerlink" title="照片墙"></a>照片墙</h1><p>原理：利用悬浮属性，使鼠标悬浮在上面的图片进行相应的变化<br>版本1：<br>HTML:</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;PhotoWall1&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../css/PhotoWall1.css&quot;/&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;img src=&quot;../img/danji.jpg&quot; &gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src=&quot;../img/dianwei.jpg&quot; &gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src=&quot;../img/diaochan.jpg&quot; &gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src=&quot;../img/sunshangxiang.jpg&quot; &gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src=&quot;../img/sunwukong.jpg&quot; &gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src=&quot;../img/luban.jpg&quot; &gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src=&quot;../img/lanlinwang.jpg&quot; &gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src=&quot;../img/kai.jpg&quot; &gt;&lt;/li&gt;
+            &lt;li&gt;&lt;img src=&quot;../img/donghuang.jpg&quot; &gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>CSS:</p>
+<pre><code class="css">* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #333;
+}
+
+ul {
+    width: 1020px;
+    height: 600px;
+    border: white solid 5px;
+    margin: 60px auto;
+    box-shadow: 0px 0px 10px #ccc;
+}
+
+li {
+    width: 320px;
+    height: 180px;
+    list-style: none;
+    float: left;
+    margin: 10px;
+    /* x y 扩散程度 阴影颜色*/
+    box-shadow: 0px 0px 10px white;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+img:hover {
+    width: 150%;
+    height: 150%;
+    position: relative;
+    top: -40px;
+    left: -40px;
+}
+
+</code></pre>
+<p>版本2:<br>HTML:</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;PhotoWall2&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../css/PhotoWall2.css&quot; /&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;box&quot;&gt;
+            &lt;img src=&quot;../img/danji.jpg&quot;&gt;
+            &lt;img src=&quot;../img/dianwei.jpg&quot;&gt;
+            &lt;img src=&quot;../img/diaochan.jpg&quot;&gt;
+            &lt;img src=&quot;../img/sunshangxiang.jpg&quot;&gt;
+            &lt;img src=&quot;../img/sunwukong.jpg&quot;&gt;
+            &lt;img src=&quot;../img/luban.jpg&quot;&gt;
+            &lt;img src=&quot;../img/lanlinwang.jpg&quot;&gt;
+            &lt;img src=&quot;../img/kai.jpg&quot;&gt;
+            &lt;img src=&quot;../img/donghuang.jpg&quot; &gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>CSS:</p>
+<pre><code class="css">* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(../img/wbg.png);
+}
+.box{
+    width: 1000px;
+    margin: 0px auto;
+    margin-top: 100px;
+}
+.box img {
+    width: 320px;
+    height: 180px;
+    border: 5px solid azure;
+    box-shadow: -10px -10px 10px black;
+    transition: all 0.3s linear;
+}
+
+img:nth-child(odd) {
+    transform: rotate(20deg);
+}
+
+img:nth-child(even) {
+    transform: rotate(-20deg);
+}
+
+img:hover {
+    transform: scale(1.3);
+    position: relative;
+    z-index: 2;
+}
+</code></pre>
+<h1 id="百叶窗"><a href="#百叶窗" class="headerlink" title="百叶窗"></a>百叶窗</h1><p>原理：当鼠标悬浮在ul标签上，所有li标签变小，悬浮的li标签变大，添加css变化动画<br>HTML:</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;WindowShades&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../css/WindowShades.css&quot;/&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;box&quot;&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;img src=&quot;../img/danji.jpg&quot; &gt;&lt;/li&gt;
+                &lt;li&gt;&lt;img src=&quot;../img/dianwei.jpg&quot; &gt;&lt;/li&gt;
+                &lt;li&gt;&lt;img src=&quot;../img/diaochan.jpg&quot; &gt;&lt;/li&gt;
+                &lt;li&gt;&lt;img src=&quot;../img/kai.jpg&quot; &gt;&lt;/li&gt;
+                &lt;li&gt;&lt;img src=&quot;../img/lanlinwang.jpg&quot; &gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>CSS:</p>
+<pre><code class="css">*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: url(../img/wbg.png);
+}
+.box{
+    width: 800px;
+    height: 360px;
+    margin: 200px auto;
+    /*溢出部分隐藏*/
+    overflow: hidden;
+}
+.box img{
+    width: 640px;
+    height: 360px;
+}
+li{
+    list-style: none;
+    width: 155px;
+    height: 360px;
+    float: left;
+    border-left: 5px solid white;
+    box-shadow: -5px 0px 10px black;
+    transition: all 0.5s linear;
+}
+/*鼠标悬浮在ul上，让ul变小*/
+.box ul:hover li{
+    width: 35px;
+}
+/*鼠标悬浮到某个li上，让li变大*/
+.box ul li:hover{
+    width: 635px;
+}
+</code></pre>
+<h1 id="3d照片墙"><a href="#3d照片墙" class="headerlink" title="3d照片墙"></a>3d照片墙</h1><p>原理：将图片以绝对定位的方式放在父容器内(目的是使图片重叠在一起)，将每张图片旋转对应的角度(360°均分)，向z轴平移适合的距离。类似于一群人想要排成一个圆圈，则需要每个人平均转向不同的方向，然后向前走出一段距离。向父容器添加旋转动画，使所有照片旋转起来。<br>HTML:</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;3dPhoto&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../css/3dPhoto.css&quot;/&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;show&quot;&gt;
+            &lt;div class=&quot;box&quot;&gt;
+                &lt;img src=&quot;../img/zhugeliang.jpg&quot; &gt;
+                &lt;img src=&quot;../img/sunwukong.jpg&quot; &gt;
+                &lt;img src=&quot;../img/diaochan.jpg&quot; &gt;
+                &lt;img src=&quot;../img/libai.jpg&quot; &gt;
+                &lt;img src=&quot;../img/zhaoyun.jpg&quot; &gt;
+                &lt;img src=&quot;../img/donghuang.jpg&quot; &gt;
+                &lt;img src=&quot;../img/dianwei.jpg&quot; &gt;
+                &lt;img src=&quot;../img/kai.jpg&quot; &gt;
+                &lt;img src=&quot;../img/lanlinwang.jpg&quot; &gt;
+                &lt;img src=&quot;../img/sunshangxiang.jpg&quot; &gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>CSS:</p>
+<pre><code class="css">* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(../img/wbg.png);
+}
+
+
+.box {
+    width: 320px;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform-style: preserve-3d;
+    animation: im 20s linear infinite;
+}
+
+.box img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+@keyframes im{
+    0% {
+        transform: rotateY(0deg) rotateX(10deg);
+    }
+
+    25% {
+        transform: rotateY(90deg) rotateX(-10deg);
+    }
+
+    50% {
+        transform: rotateY(180deg) rotateX(10deg);
+    }
+
+    75% {
+        transform: rotateY(270deg) rotateX(-10deg);
+    }
+
+    100% {
+        transform: rotateY(360deg) rotateX(10deg);
+    }
+
+}
+
+/*10张图片3d变换*/
+.box img:nth-child(1) {
+    transform: rotateY(0deg) translateZ(600px);
+    backface-visibility: visible;
+}
+
+.box img:nth-child(2) {
+    transform: rotateY(36deg) translateZ(600px);
+    backface-visibility: visible;
+}
+
+.box img:nth-child(3) {
+    transform: rotateY(72deg) translateZ(600px);
+    backface-visibility: visible;
+}
+
+.box img:nth-child(4) {
+    transform: rotateY(108deg) translateZ(600px);
+    backface-visibility: visible;
+}
+
+.box img:nth-child(5) {
+    transform: rotateY(144deg) translateZ(600px);
+    backface-visibility: visible;
+}
+
+.box img:nth-child(6) {
+    transform: rotateY(180deg) translateZ(600px);
+    backface-visibility: visible;
+}
+
+.box img:nth-child(7) {
+    transform: rotateY(216deg) translateZ(600px);
+    backface-visibility:visible;
+}
+
+.box img:nth-child(8) {
+    transform: rotateY(252deg) translateZ(600px);
+    backface-visibility: visible;
+}
+
+.box img:nth-child(9) {
+    transform: rotateY(288deg) translateZ(600px);
+    backface-visibility: visible;
+}
+
+.box img:nth-child(10) {
+    transform: rotateY(324deg) translateZ(600px);
+    backface-visibility: visible;
+}
+</code></pre>
+<h1 id="立方体相册"><a href="#立方体相册" class="headerlink" title="立方体相册"></a>立方体相册</h1><p>原理：将ul下6个li标签进行绝对定位，6个li标签分别转向6个方向，向Z轴的两个方向扩展立方体边长的一半。<br>HTML:</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;cube&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../css/cube.css&quot;/&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>CSS:</p>
+<pre><code class="css">* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #333;
+}
+
+ul {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    /*3d空间*/
+    transform-style: preserve-3d;
+    animation: box 20s linear infinite;
+}
+
+@keyframes box {
+
+    /*3d旋转 x y z deg*/
+    from {
+        transform: rotate3d(0, 0, 0, 0deg);
+    }
+
+    to {
+        transform: rotate3d(1, 1, 1, 360deg);
+    }
+}
+
+li {
+    width: 300px;
+    height: 300px;
+    list-style: none;
+    border: 1px solid black;
+    position: absolute;
+    opacity: 0.8;
+    box-shadow: 0px 0px 10px white;
+}
+
+li:nth-child(1) {
+    background: url(../img/danji.jpg);
+    background-position: center;
+    background-size: cover;
+    transform: translateZ(150px);
+}
+
+/*后*/
+li:nth-child(2) {
+    background: url(../img/donghuang.jpg);
+    background-position: center;
+    background-size: cover;
+    transform: translateZ(-150px);
+}
+
+/*左*/
+li:nth-child(3) {
+    background: url(../img/luban.jpg);
+    background-position: center;
+    background-size: cover;
+    transform: rotateY(90deg) translateZ(-150px);
+}
+
+/*右*/
+li:nth-child(4) {
+    background: url(../img/libai.jpg);
+    background-position: center;
+    background-size: cover;
+    transform: rotateY(90deg) translateZ(150px);
+}
+
+/*上*/
+li:nth-child(5) {
+    background: url(../img/kai.jpg);
+    background-position: center;
+    background-size: cover;
+    transform: rotateX(90deg) translateZ(150px);
+}
+
+li:nth-child(6) {
+    background: url(../img/sunwukong.jpg);
+    background-position: center;
+    background-size: cover;
+    transform: rotateX(90deg) translateZ(-150px);
+}
+
+ul:hover {
+    animation-play-state: paused;
+}
+</code></pre>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><a href="https://github.com/RoyalKnights/PhotoShow" target="_blank" rel="noopener">GitHub</a></p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/zfb.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/wx.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div> -->
+        <!-- <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer> -->
+        <!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2019/08/05/qd/1564969377/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover08.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover08.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                Vue教程</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2019/06/09/ht/1560073278/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover05.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover05.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                PHP接口实战教程——PHP+Mysql+ajax实现分页查询接口</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "cizX6JyUwSbQtAaLDNFyacCr-gzGzoHsz",
+        appKey: "EW08QRUzIBGQ46OIYIjbnejX",
+        path: window.location.pathname,
+        placeholder: "虚空之席..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg" itemprop="image" alt="皇家小骑士" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">皇家小骑士</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <!-- <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div> -->
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 皇家小骑士<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2019</p>
+    </div>
+    <div class="footer-device">
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">皇家小骑士
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "",
+        "name": "",
+        "live": "close"
+      },
+      "windowheight": "fixed",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  } else {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "",
+        "name": "",
+        "live": "open"
+      },
+      "windowheight": "auto",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  }
+  /* ]]> */
+</script>
+<script>
+  $(document).ready(function () {
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc').offset().top - 95;
+      window.onscroll = function () {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+</script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <!-- <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div> -->
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">ロイヤルナイツ皇家小骑士</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="https://github.com/RoyalKnights" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://blog.csdn.net/qq_41866776" class="fa fa-code" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-home faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-tada" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/qd/">
+                  <i class="fa fa-html5" aria-hidden="true"></i>
+                  前端
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/ht/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  后台
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/fwd/">
+                  <i class="fa fa-server" aria-hidden="true"></i>
+                  服务端
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/qt/">
+                  <i class="fa fa-map-o" aria-hidden="true"></i>
+                  其他
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-shake" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-tada" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 royalknights</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id=""
+
+    server=""
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":145,"height":315},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
+</html>

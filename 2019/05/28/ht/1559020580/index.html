@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">PHP基础知识——PHP学习笔记（一） | RoyalKnights</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "ロイヤルナイツ皇家小骑士";
+  mashiro_option.author_name = "皇家小骑士";
+  mashiro_option.site_url = "";
+  mashiro_option.v_appId = "cizX6JyUwSbQtAaLDNFyacCr-gzGzoHsz";
+  mashiro_option.v_appKey = "EW08QRUzIBGQ46OIYIjbnejX";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/sy.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('IE浏览器还未适配哦');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dim">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="">
+          <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>堵上皇家骑士的无上荣耀</p>
+        <div class="top-social_v2">
+          <li id="bg-pre" style="display: none;">
+            <img class="flipx">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/RoyalKnights" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://blog.csdn.net/qq_41866776" target="_blank" class="social-github" title="csdn">
+                    <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/csdn.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next" style="display: none;">
+            <img src="">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive" style="display: none;">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">ロイヤルナイツ</span>
+            <span class="shironeko">皇家小骑士</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <!-- <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div> -->
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-home faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-tada" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/qd/">
+                          <i class="fa fa-html5" aria-hidden="true"></i>
+                          前端
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/ht/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          后台
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/fwd/">
+                          <i class="fa fa-server" aria-hidden="true"></i>
+                          服务端
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/qt/">
+                          <i class="fa fa-map-o" aria-hidden="true"></i>
+                          其他
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-shake" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-tada" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover01.jpg);" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover01.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      PHP基础知识——PHP学习笔记（一）</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">皇家小骑士</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2019-5-28<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="PHP规范"><a href="#PHP规范" class="headerlink" title="PHP规范"></a>PHP规范</h1><p> PHP代码写在&lt;?php?&gt;</p>
+<pre><code class="php">&lt;?php
+// 这里是PHP代码
+?&gt;
+</code></pre>
+<p>php注释</p>
+<pre><code class="php">//单行注释
+/*多行注释*/
+</code></pre>
+<h1 id="pho输出"><a href="#pho输出" class="headerlink" title="pho输出"></a>pho输出</h1><h2 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h2><p>可以输出一个或多个字符串，无返回值</p>
+<h2 id="print"><a href="#print" class="headerlink" title="print"></a>print</h2><p>只允许输出一个字符串，返回值总为 1</p>
+<h1 id="PHP变量"><a href="#PHP变量" class="headerlink" title="PHP变量"></a>PHP变量</h1><h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>1.变量名以 $ 符号开始，后面跟着变量的名称<br>2.变量名必须以字母或者下划线字符开<br>3.变量名只能包含字母数字字符以及下划线<br>4.变量不能有空格，变量区分大小写</p>
+<h2 id="创建php变量名"><a href="#创建php变量名" class="headerlink" title="创建php变量名"></a>创建php变量名</h2><p>php不用申明变量，在第一次赋值的时候自动创建</p>
+<h2 id="局部作用域和全局作用域"><a href="#局部作用域和全局作用域" class="headerlink" title="局部作用域和全局作用域"></a>局部作用域和全局作用域</h2><p>在所有函数外部定义的变量，拥有全局作用域。除了函数外，全局变量可以被脚本中的任何部分访问，要在一个函数中访问一个全局变量，需要使用 global 关键字在函数中调用全局变量</p>
+<pre><code class="php">&lt;?php 
+    $x=1; // 全局变量 
+    function test() 
+    { 
+        $y=2; // 局部变量 
+        echo &quot;函数中调用x的值为:$x&quot;;
+        echo &quot;&lt;br&gt;&quot;; 
+        echo &quot;函数中调用y的值为:$y&quot;;
+        echo &quot;&lt;br&gt;&quot;; 
+    } 
+    test();
+    echo &quot;外部调用x的值为:$x&quot;; 
+    echo &quot;&lt;br&gt;&quot;; 
+    echo &quot;外部调用x的值为:$y&quot;; 
+    echo &quot;&lt;br&gt;&quot;;
+?&gt;
+</code></pre>
+<p>输出结果为：<br>函数中调用x的值为:<br>函数中调用y的值为:2<br>外部调用x的值为:1<br>外部调用y的值为:</p>
+<pre><code class="php">&lt;?php 
+    $x=1; // 全局变量
+    function test() 
+    { 
+        global $x; // 局部变量 
+        echo &quot;函数中调用x的值为:$x&quot;;
+        echo &quot;&lt;br&gt;&quot;;
+        $x=2;
+    } 
+    test();
+    echo &quot;外部调用x的值为:$x&quot;;
+?&gt;
+</code></pre>
+<p>输出结果为：<br>函数中调用x的值为:1<br>外部调用x的值为：2</p>
+<p>PHP 将所有全局变量存储在一个名为 $GLOBALS[index] 的数组中。 index 保存变量的名称。</p>
+<h2 id="Static-作用域"><a href="#Static-作用域" class="headerlink" title="Static 作用域"></a>Static 作用域</h2><p>当一个函数被完成时，局部变量会被删除，可使用Static关键字来保留局部变量</p>
+<pre><code class="php">&lt;?php
+    function test()
+    {
+        static $x=0;
+        echo $x;
+        $x++;
+           echo &quot;&lt;br&gt;&quot;;    // 换行符
+     }
+     echo &quot;第1次使用函数x为:&quot;;
+    test();
+    echo &quot;第2次使用函数x为:&quot;;
+    test();
+    echo &quot;第3次使用函数x为:&quot;;
+    test();
+?&gt;
+</code></pre>
+<pre><code>输出结果
+第1次使用函数x为:0
+第2次使用函数x为:1
+第3次使用函数x为:2
+</code></pre><h2 id="超级全局变量"><a href="#超级全局变量" class="headerlink" title="超级全局变量"></a>超级全局变量</h2><table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$GLOBALS</td>
+<td>$GLOBALS 是一个包含了全部变量的全局组合数组。变量的名字就是数组的键</td>
+</tr>
+<tr>
+<td>$_SERVER</td>
+<td>$_SERVER 是一个包含了诸如头信息(header)、路径(path)、以及脚本位置(script locations)等等信息的数组。这个数组中的项目由 Web 服务器创建。不能保证每个服务器都提供全部项目<a href="https://img-blog.csdnimg.cn/20190601170215360.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODY2Nzc2,size_16,color_FFFFFF" target="_blank" rel="noopener">$_SERVER中的元素</a></td>
+</tr>
+<tr>
+<td>$_POST</td>
+<td>$_POST 被广泛应用于收集表单数据，在HTML form标签的指定该属性：”method=”post”</td>
+</tr>
+<tr>
+<td>$_GET</td>
+<td>$_GET 同样被广泛应用于收集表单数据，在HTML form标签的指定该属性：”method=”get”</td>
+</tr>
+</tbody>
+</table>
+<h1 id="PHP常量"><a href="#PHP常量" class="headerlink" title="PHP常量"></a>PHP常量</h1><p>常量值被定义后，在脚本的其他任何地方都不能被改变<br>一个常量由英文字母、下划线、和数字组成,但数字不能作为首字母出现。 (常量名不需要加 $ 修饰符)。<br>常量是全局的</p>
+<h2 id="设置常量"><a href="#设置常量" class="headerlink" title="设置常量"></a>设置常量</h2><blockquote>
+<p>bool define ( string $name , mixed $value [, bool $case_insensitive = false ] )</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>必选参数，常量名称，即标志符</td>
+</tr>
+<tr>
+<td>value</td>
+<td>必选参数，常量的值</td>
+</tr>
+<tr>
+<td>case_insensitive</td>
+<td>可选参数，如果设置为 TRUE，该常量则大小写不敏感。默认是大小写敏感</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="php">&lt;?php
+    define(&quot;TEST&quot;, &quot;不区分大小写&quot;,true);
+    echo TEST;
+    echo &#39;&lt;br&gt;&#39;;
+    echo test;
+?&gt;
+</code></pre>
+<pre><code>输出结果
+不区分大小写
+不区分大小写
+</code></pre><h2 id="魔术常量"><a href="#魔术常量" class="headerlink" title="魔术常量"></a>魔术常量</h2><table>
+<thead>
+<tr>
+<th>常量名</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>__ LINE__</td>
+<td>文件中的当前行号</td>
+</tr>
+<tr>
+<td>__ FILE__</td>
+<td>文件的完整路径和文件名</td>
+</tr>
+<tr>
+<td>__ DIR__</td>
+<td>文件所在的目录</td>
+</tr>
+<tr>
+<td>__ FUNCTION__</td>
+<td>函数名称</td>
+</tr>
+<tr>
+<td>__ CLASS__</td>
+<td>类的名称</td>
+</tr>
+<tr>
+<td>__ METHOD__</td>
+<td>类的方法名</td>
+</tr>
+<tr>
+<td>__ NAMESPACE__</td>
+<td>当前命名空间的名称（区分大小写）</td>
+</tr>
+</tbody>
+</table>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p> 函数返回变量的数据类型和值</p>
+<blockquote>
+<p>var_dump()</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>中文</th>
+<th>注解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>String</td>
+<td>字符串</td>
+<td>可放单引号和双引号中</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td>整型</td>
+<td>十进制， 十六进制（ 以 0x 为前缀）或八进制（前缀为 0）</td>
+</tr>
+<tr>
+<td>Float</td>
+<td>浮点型</td>
+<td>带小数部分的数字，或是指数形式</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>布尔型</td>
+<td>TRUE 或 FALSE</td>
+</tr>
+<tr>
+<td>Array</td>
+<td>数组</td>
+<td>一个变量中存储多个值</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>对象</td>
+<td>在 PHP 中，对象必须声明</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>空值</td>
+<td>NULL 值表示变量没有值</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="php">&lt;?php 
+    $x = &quot;hello&quot;; //字符串
+    var_dump($x);
+    echo &quot;&lt;br&gt;&quot;; 
+    $x = 10;//整形
+    var_dump($x);
+    echo &quot;&lt;br&gt;&quot;; 
+    $x = 1.1;//浮点型
+    var_dump($x);
+    echo &quot;&lt;br&gt;&quot;;
+    $x = true; //布尔型
+    var_dump($x);
+    echo &quot;&lt;br&gt;&quot;;
+    $x = array(1,2,3); //数组
+    var_dump($x);
+    echo &quot;&lt;br&gt;&quot;;
+    $y; //空值
+    var_dump($y);
+?&gt;
+</code></pre>
+<pre><code>输出结果：
+E:\WebProject\phptest\test.php:3:string &#39;hello&#39; (length=5
+E:\WebProject\phptest\test.php:6:int 1
+E:\WebProject\phptest\test.php:9:float 1.
+E:\WebProject\phptest\test.php:12:boolean tru
+E:\WebProject\phptest\test.php:15:
+array (size=3)
+ 0 =&gt; int 1
+ 1 =&gt; int 2
+ 2 =&gt; int 3
+ E:\WebProject\phptest\test.php:18:null
+</code></pre><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>1.字符串用 . 连接<br>2.strlen() 函数返回字符串的长度（字符数）<br>3.strpos(“”,””) 函数用于在字符串内查找一个字符或一段指定的文本，如果在字符串中找到匹配，该函数会返回第一个匹配的字符位置。如果未找到匹配，则返回 FALSE</p>
+<pre><code class="php">&lt;?php 
+    echo strpos(&quot;Hello world!&quot;,&quot;world&quot;); 
+?&gt;
+输出6
+</code></pre>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>创建数组<br>1.自动分配 ID 键 </p>
+<blockquote>
+<p>$变量名=array(“”,””,””)</p>
+</blockquote>
+<p>2.人工分配 ID 键</p>
+<blockquote>
+<p>\$变量名[0]=””<br>\$变量名[1]=””<br>\$变量名[2]=””</p>
+</blockquote>
+<p>3.获取数组的长度<br>count() 函数用于返回数组的长度<br>4.关联数组</p>
+<blockquote>
+<p>$变量名=array(“key”=&gt;”value”,”key”=&gt;”value”,”key”=&gt;”value”);<br>or<br>$变量名[key]=”value”<br>$变量名[key]=”value”<br>$变量名[key]=”value”</p>
+</blockquote>
+<p>5.遍历关联数组</p>
+<blockquote>
+<p>foreach($数组变量名 as $x=&gt;$x_value){}</p>
+</blockquote>
+<pre><code class="php">&lt;?php
+    $score=array(&quot;NO.1&quot;=&gt;&quot;100&quot;,&quot;NO.2&quot;=&gt;&quot;90&quot;,&quot;NO.3&quot;=&gt;&quot;80&quot;);
+    foreach($score as $x=&gt;$x_value)
+    {
+        echo $x . &quot;的成绩是&quot; . $x_value;
+        echo &quot;&lt;br&gt;&quot;;
+    }
+?&gt;
+</code></pre>
+<pre><code>输出结果
+NO.1的成绩是100
+NO.2的成绩是90
+NO.3的成绩是80
+</code></pre><p>6.数组排序</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>注解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sort()</td>
+<td>对数组进行升序排列</td>
+</tr>
+<tr>
+<td>rsort()</td>
+<td>对数组进行降序排列</td>
+</tr>
+<tr>
+<td>asort()</td>
+<td>根据关联数组的值，对数组进行升序排列</td>
+</tr>
+<tr>
+<td>ksort()</td>
+<td>根据关联数组的键，对数组进行升序排列</td>
+</tr>
+<tr>
+<td>arsort()</td>
+<td>根据关联数组的值，对数组进行降序排列</td>
+</tr>
+<tr>
+<td>krsort()</td>
+<td>根据关联数组的键，对数组进行降序排列</td>
+</tr>
+</tbody>
+</table>
+<h1 id="类型比较"><a href="#类型比较" class="headerlink" title="类型比较"></a>类型比较</h1><p>1.松散比较： == ，只比较值，不比较类型。<br>2.严格比较：=== ，除了比较值，也比较类型<br>3.比较运算符中&gt;=正确表达，返回布尔值<br>4.优先级： &amp;&amp;  &gt;  =  &gt;  and<br>5.优先级： ||  &gt;  =  &gt;  or</p>
+<h1 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h1><p>引入的多个文件中可能存在同名的类、函数、常量，就会报错</p>
+<h2 id="定义命名空间"><a href="#定义命名空间" class="headerlink" title="定义命名空间"></a>定义命名空间</h2><p>命名空间通过关键字namespace 来声明。如果一个文件中包含命名空间，它必须在其它所有代码之前声明命名空间</p>
+<pre><code class="php">&lt;?php  
+    namespace MyProject;
+
+    const CONNECT_OK = 1;//常量
+    class Connection { /* ... */ }//类
+    function connect() { /* ... */}//函数
+?&gt;  
+</code></pre>
+<h2 id="空间成员"><a href="#空间成员" class="headerlink" title="空间成员"></a>空间成员</h2><p>1.空间只影响类、函数、常量(const)<br>2.其他代码不受影响 </p>
+<h2 id="子空间以及访问方式"><a href="#子空间以及访问方式" class="headerlink" title="子空间以及访问方式"></a>子空间以及访问方式</h2><p>子空间命名</p>
+<pre><code class="php">&lt;?php
+namespace MyProject\Sub\Level;  //声明分层次的单个命名空间
+const CONNECT_OK = 1;
+class Connection { /* ... */ }
+function Connect() { /* ... */  
+?&gt;
+</code></pre>
+<p> 访问方式</p>
+<ul>
+<li>非限定访问:访问当前空间的成员 </li>
+<li>限定访问:只能访问当前空间的子空间的成员 子文件夹\元素名</li>
+<li>完全限定:可以访问其他空间的所有成员 \空间名\元素名</li>
+</ul>
+<p>use 空间名\空间名 【as 别名】：将指定空间引入到当前空间。同可以使用as关键字为被引入的空间起个别名</p>
+<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><h2 id="类的定义以及实例化"><a href="#类的定义以及实例化" class="headerlink" title="类的定义以及实例化"></a>类的定义以及实例化</h2><p>1.类使用 class 关键字后加上类名定义<br>2.类名后的一对大括号({})内可以定义变量和方法<br>3.类的变量使用 var 来声明, 变量也可以初始化值。<br>4.函数定义类似 PHP 函数的定义，但函数只能通过该类及其实例化的对象访问<br>5.变量 \$this 代表自身的对象。-&gt;指向成员变量名称<br>6.调用成员函数用-&gt;</p>
+<pre><code class="php">&lt;?php
+    class Car{
+      /* 成员变量 */
+      var $cloor;
+      /* 成员函数 */
+     function setCloor($col){
+        $this-&gt;cloor = $col;
+      }
+      function showCloor(){
+           echo $this-&gt;cloor;
+      }
+    }
+    $Volvo=new Car;
+    $Volvo-&gt;setCloor(&quot;red&quot;);
+    $Volvo-&gt;showCloor();
+?&gt;
+</code></pre>
+<h2 id="php构造函数"><a href="#php构造函数" class="headerlink" title="php构造函数"></a>php构造函数</h2><p>要用来在创建对象时初始化对象， 即为对象成员变量赋初始值，在创建对象的语句中与 new 运算符一起使用</p>
+<blockquote>
+<p>void __construct ([ mixed $args [, $… ]] )</p>
+</blockquote>
+<pre><code class="php">&lt;?php
+    class Car{
+      /* 成员变量 */
+      var $cloor;
+      /* 成员函数 */
+     function __construct($col){
+           $this-&gt;cloor = $col;
+    }
+      function showCloor(){
+           echo $this-&gt;cloor;
+      }
+    }
+    $Volvo=new Car(&quot;red&quot;);
+    $Volvo-&gt;showCloor();
+?&gt;
+</code></pre>
+<h2 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h2><p>当对象结束其生命周期时（例如对象所在的函数已调用完毕），系统自动执行析构函</p>
+<blockquote>
+<p>void __destruct ( void )</p>
+</blockquote>
+<h2 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h2><p>访问控制</p>
+<ul>
+<li>public（公有）：公有的类成员可以在任何地方被访问。</li>
+<li>protected（受保护）：受保护的类成员则可以被其自身以及其子类和父类访问。</li>
+<li>private（私有）：私有的类成员则只能被其定义所在的类访问。</li>
+</ul>
+<p>继承<br>PHP 不支持多继承</p>
+<pre><code class="php">&lt;?php
+    class Car{
+         public $cloor;
+         function __construct($col){
+               $this-&gt;cloor = $col;
+        }
+          function showCloor(){
+               echo $this-&gt;cloor;
+          }
+    }
+    class Scar extends Car{
+        public $speed;
+        function __construct($col,$spd){
+            $this-&gt;cloor = $col;
+            $this-&gt;speed = $spd;
+        }
+        function showSpeed(){
+            echo &quot;&lt;br /&gt;&quot;.$this-&gt;speed;
+        }
+    }
+    $Volvo=new SCar(&quot;red&quot;,55);
+    $Volvo-&gt;showCloor();
+    $Volvo-&gt;showSpeed();
+?&gt;
+</code></pre>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>1.使用接口（interface），可以指定某个类必须实现哪些方法，但不需要定义这些方法的具体内容<br>2.接口是通过 interface 关键字来定义的，就像定义一个标准的类一样，但其中定义所有的方法都是空的<br>3.接口中定义的所有方法都必须是公有，这是接口的特性<br>4.要实现一个接口，使用 implements 操作符。类中必须实现接口中定义的所有方法，否则会报一个致命错误。类可以实现多个接口，用逗号来分隔多个接口的名称。</p>
+<pre><code class="php">&lt;?php
+    //定义接口
+    interface interface_1
+    {
+            public function dosomething();
+    }
+    // 实现接口
+    class interface_2 implements interface_1
+    {
+        public function dosomething()
+        {
+            /**/
+        }
+    }
+?&gt;
+</code></pre>
+<h2 id="Static-关键字"><a href="#Static-关键字" class="headerlink" title="Static 关键字"></a>Static 关键字</h2><p>1.声明类属性或方法为 static(静态)，就可以不实例化类而直接访问,类名: :方法名<br>2.静态属性不能通过一个类已实例化的对象来访问（但静态方法可以）<br>3.由于静态方法不需要通过对象即可调用，所以伪变量 $this 在静态方法中不可用<br>4.静态属性不可以由对象通过 -&gt; 操作符来访问。</p>
+<pre><code class="php">&lt;?php
+    class test{
+          public static $my_static = &#39;test&#39;;
+          public function showValue() {
+             return self::$my_static;
+         }
+    }
+    echo test::$my_static . &quot;&lt;br /&gt;&quot;;
+    $test = new test();
+    echo  $test-&gt;showValue();
+?&gt; 
+</code></pre>
+<h2 id="Final-关键字"><a href="#Final-关键字" class="headerlink" title="Final 关键字"></a>Final 关键字</h2><p>如果父类中的方法被声明为 final，则子类无法覆盖该方法。如果一个类被声明为 final，则不能被继承。</p>
+<h2 id="调用父类构造方法"><a href="#调用父类构造方法" class="headerlink" title="调用父类构造方法"></a>调用父类构造方法</h2><p>PHP 不会在子类的构造方法中自动的调用父类的构造方法。要执行父类的构造方法，需要在子类的构造方法中调用 parent::__construct() </p>
+<pre><code class="php">&lt;?php
+    class parentclass{
+        function __construct(){
+            echo &quot;这是父类的构造方法&lt;br /&gt;&quot;;
+        }
+    }
+    class childclass extends parentclass{
+        function __construct(){
+            parent::__construct();
+            echo &quot;这是子类的构造方法&quot;;
+        }
+    }
+    $obj=new childclass;
+?&gt; 
+</code></pre>
+<pre><code>输出结果
+这是父类的构造方法
+这是子类的构造方法
+</code></pre>
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/zfb.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/wx.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div> -->
+        <!-- <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer> -->
+        <!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre full previous">
+          
+            <a href="/2019/06/02/ht/1559448766/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover02.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover02.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                PHP表单处理——PHP学习笔记（二）</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "cizX6JyUwSbQtAaLDNFyacCr-gzGzoHsz",
+        appKey: "EW08QRUzIBGQ46OIYIjbnejX",
+        path: window.location.pathname,
+        placeholder: "虚空之席..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg" itemprop="image" alt="皇家小骑士" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">皇家小骑士</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <!-- <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div> -->
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 皇家小骑士<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2019</p>
+    </div>
+    <div class="footer-device">
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">皇家小骑士
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "",
+        "name": "",
+        "live": "close"
+      },
+      "windowheight": "fixed",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  } else {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "",
+        "name": "",
+        "live": "open"
+      },
+      "windowheight": "auto",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  }
+  /* ]]> */
+</script>
+<script>
+  $(document).ready(function () {
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc').offset().top - 95;
+      window.onscroll = function () {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+</script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <!-- <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div> -->
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">ロイヤルナイツ皇家小骑士</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="https://github.com/RoyalKnights" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://blog.csdn.net/qq_41866776" class="fa fa-code" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-home faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-tada" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/qd/">
+                  <i class="fa fa-html5" aria-hidden="true"></i>
+                  前端
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/ht/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  后台
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/fwd/">
+                  <i class="fa fa-server" aria-hidden="true"></i>
+                  服务端
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/qt/">
+                  <i class="fa fa-map-o" aria-hidden="true"></i>
+                  其他
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-shake" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-tada" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 royalknights</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id=""
+
+    server=""
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":145,"height":315},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
+</html>

@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">node.js教程--持续更新中 | RoyalKnights</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "ロイヤルナイツ皇家小骑士";
+  mashiro_option.author_name = "皇家小骑士";
+  mashiro_option.site_url = "";
+  mashiro_option.v_appId = "cizX6JyUwSbQtAaLDNFyacCr-gzGzoHsz";
+  mashiro_option.v_appKey = "EW08QRUzIBGQ46OIYIjbnejX";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/sy.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('IE浏览器还未适配哦');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dim">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="">
+          <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>堵上皇家骑士的无上荣耀</p>
+        <div class="top-social_v2">
+          <li id="bg-pre" style="display: none;">
+            <img class="flipx">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/RoyalKnights" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://blog.csdn.net/qq_41866776" target="_blank" class="social-github" title="csdn">
+                    <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/csdn.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next" style="display: none;">
+            <img src="">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive" style="display: none;">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">ロイヤルナイツ</span>
+            <span class="shironeko">皇家小骑士</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <!-- <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div> -->
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-home faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-tada" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/qd/">
+                          <i class="fa fa-html5" aria-hidden="true"></i>
+                          前端
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/ht/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          后台
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/fwd/">
+                          <i class="fa fa-server" aria-hidden="true"></i>
+                          服务端
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/qt/">
+                          <i class="fa fa-map-o" aria-hidden="true"></i>
+                          其他
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-shake" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-tada" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover04.jpg);" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover04.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      node.js教程--持续更新中</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">皇家小骑士</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2019-9-24<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="node安装"><a href="#node安装" class="headerlink" title="node安装"></a>node安装</h1><p>进入<a href="https://nodejs.org/en/" target="_blank" rel="noopener">node官网</a><br><img src="https://img-blog.csdnimg.cn/20191021162812855.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODY2Nzc2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>第一个为长期支持的版本，可以理解成稳定版，第二个为发布版本，含有最新的功能。可根据需求下载安装。<br>下载完成后，打开文件选择路径即可安装。<br>***若需要切换不同的版本，则需要使用nvm</p>
+<p><a href="https://mp.csdn.net/mdeditor/102664679#" target="_blank" rel="noopener">NVM安装使用教程</a></p>
+<h1 id="REPL"><a href="#REPL" class="headerlink" title="REPL"></a>REPL</h1><p>Node.js中REPL(交互式解释器) 表示一个电脑的环境，可以在终端输入命令，并接受响应</p>
+<ul>
+<li>读取(read) - 读取用户输入的js代码</li>
+<li>执行(exec)- 执行用户输入的js代码</li>
+<li>打印(print)- 打印用户输入的js代码</li>
+<li>循环(loop)- 循环操作以上步骤直到用户两次按下 ctrl-c 按钮退出</li>
+</ul>
+<p>类似于浏览器的调试窗口，可执行简单的表达式运算，这里不多做解释。<br>附上一些常用的命令</p>
+<ul>
+<li>ctrl + c 按下两次 - 退出 Node REPL</li>
+<li>ctrl + d - 退出 Node REPL</li>
+<li>向上/向下 键 - 查看输入的历史命令</li>
+<li>.help - 列出使用命令</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20190924202039176.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODY2Nzc2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>在E盘放入一个hello.js，内容为<code>console.log(&quot;hello&quot;)</code>,执行终端</p>
+<p><img src="https://img-blog.csdnimg.cn/20190924202723712.png" alt="在这里插入图片描述"></p>
+<h1 id="自定义模块"><a href="#自定义模块" class="headerlink" title="自定义模块"></a>自定义模块</h1><p>1.创建一个模块(一个js就是一个模块)<br>2.导出一个模块(module.exports=name)<br>3.引入一个模块并且调用(require)</p>
+<p>这里用个例子来解释模块的导出以及导入<br>dog.js功能模块</p>
+<pre><code class="js">let dog={
+    dogname:&#39;wangcai&#39;,
+    say(){
+        console.log(&#39;wangwang&#39;)
+    }
+}
+module.exports=dog
+</code></pre>
+<p>main.js引用模块</p>
+<pre><code class="js">//引入模块，赋值给cal
+const Module=require(&#39;./dog&#39;)
+console.log(Module.dogname);
+Module.say()
+</code></pre>
+<p>终端执行</p>
+<p><img src="https://img-blog.csdnimg.cn/20191005145009953.png" alt="在这里插入图片描述"></p>
+<h1 id="内置模块"><a href="#内置模块" class="headerlink" title="内置模块"></a>内置模块</h1><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>fs 模块提供了一个 API，用于以模仿标准 POSIX 函数的方式与文件系统进行交互。</p>
+<blockquote>
+<p>这里全部操作只讲解异步操作，同步操作请参照官方文档，同步操作中，可以用try catch语句捕获异常。</p>
+</blockquote>
+<p>异步读取文件目录</p>
+<blockquote>
+<p>   fs.readdir(path[, options], callback)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path</td>
+<td>路径</td>
+</tr>
+<tr>
+<td>options</td>
+<td>可选参数,encoding(可选编码默认UTF-8),withFileTypes(默认false))</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>回调函数,err(为null则成功,否则返回错误信息),files(目录中的文件名的数组)</td>
+</tr>
+</tbody>
+</table>
+<p>文件目录<br><img src="https://img-blog.csdnimg.cn/20191005152939553.png" alt="在这里插入图片描述"><br>    代码</p>
+<pre><code class="js">const fs=require(&#39;fs&#39;)
+fs.readdir(&#39;./&#39;,(err,file)=&gt;{
+    //读取正确err为null，否则为错误信息
+    if (err) throw err
+       console.log(file)
+})
+fs.readdir(&#39;./dir&#39;,(err,file)=&gt;{
+    if (err) throw err
+       console.log(file)
+})
+</code></pre>
+<p>输出结果<br>    <img src="https://img-blog.csdnimg.cn/20191005153223821.png" alt="在这里插入图片描述"><br>创建目录</p>
+<blockquote>
+<p>fs.mkdir(path[, options], callback)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path</td>
+<td>路径</td>
+</tr>
+<tr>
+<td>options</td>
+<td>可选参数,recursive(recursive 属性默认值: false),mode( Windows 上不支持默认值: 0o777)</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>回调函数,err(为null则成功,否则返回错误信息)</td>
+</tr>
+</tbody>
+</table>
+<p>代码</p>
+<pre><code class="js">const fs=require(&#39;fs&#39;)
+fs.mkdir(&#39;./test&#39;,(err)=&gt;{
+    if (err) throw err
+       console.log(&#39;创建目录成功&#39;)
+})
+</code></pre>
+<p>重命名</p>
+<blockquote>
+<p>fs.rename(oldPath, newPath, callback</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>oldPath</td>
+<td>原文件名字</td>
+</tr>
+<tr>
+<td>newPath</td>
+<td>重命名后的文件名字</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>回调函数,err(为null则成功,否则返回错误信息)</td>
+</tr>
+</tbody>
+</table>
+<p>代码</p>
+<pre><code class="js">const fs=require(&#39;fs&#39;)
+fs.rename(&#39;./test&#39;,&#39;./test1&#39;,(err)=&gt;{
+    if(err) throw err
+    console.log(&quot;重命名成功&quot;)
+})
+</code></pre>
+<p>写文件</p>
+<blockquote>
+<p>fs.writeFile(file, data[, options], callback)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>file</td>
+<td>文件名或文件描述符</td>
+</tr>
+<tr>
+<td>data</td>
+<td>写入的数据</td>
+</tr>
+<tr>
+<td>options</td>
+<td>可选参数,encoding(可选编码默认UTF-8),mode(模式),flag(文件系统标志默认w)</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>回调函数,err为null则成功,否则返回错误信息</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="js">const fs=require(&#39;fs&#39;)
+fs.writeFile(&#39;./test.txt&#39;,&#39;HelloWorld&#39;,[&#39;utf-8&#39;,&#39;w&#39;],(err)=&gt;{
+    if (err) throw err
+    console.log(&#39;文件写入成功&#39;)
+})
+</code></pre>
+<p>  读文件</p>
+<pre><code>fs.readFile(path[, options], callback)
+</code></pre><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path</td>
+<td>文件路径</td>
+</tr>
+<tr>
+<td>options</td>
+<td>可选参数encoding(可选编码默认null),flag(文件系统标志默认r)</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>回调参数,err(错误信息),data(返回的数据,如果没指定编码,返回原始的 buffer)</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="js">const fs=require(&#39;fs&#39;)
+fs.readFile(&#39;./test.txt&#39;,&#39;utf-8&#39;,(err,data)=&gt;{
+       if(err) throw err
+    console.log(data)
+})
+</code></pre>
+<p>删除文件</p>
+<blockquote>
+<p>fs.unlink(path, callback)</p>
+</blockquote>
+<p>代码</p>
+<pre><code class="js">const fs=require(&#39;fs&#39;)
+fs.unlink(&#39;./test.txt&#39;,(err)=&gt;{
+    if(err) throw err
+    console.log(&#39;文件删除成功&#39;)
+})
+</code></pre>
+<p><a href="http://nodejs.cn/api/fs.html" target="_blank" rel="noopener">更多请点击fs官方文档</a></p>
+<h2 id="url处理"><a href="#url处理" class="headerlink" title="url处理"></a>url处理</h2><p>url 模块用于处理与解析 URL<br><img src="https://img-blog.csdnimg.cn/20191005170228519.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODY2Nzc2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>url.parse在最新node中为遗留属性，这里不做讲解，采用URL类进行讲解</p>
+</blockquote>
+<p>URL 类</p>
+<pre><code>new URL(input[, base])
+</code></pre><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>要解析的绝对或相对的 URL。如果 input 是相对路径，则需要 base。 如果 input 是绝对路径，则忽略 base</td>
+</tr>
+<tr>
+<td>base</td>
+<td>如果 input 不是绝对路径，则为要解析的基本 URL</td>
+</tr>
+</tbody>
+</table>
+<p>代码</p>
+<pre><code class="js">const myURL = new URL(&#39;https://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash&#39;)
+console.log(myURL.href)//整个连接
+console.log(myURL.protocol)//协议
+console.log(myURL.username)//用户名
+console.log(myURL.password)//密码
+console.log(myURL.host)//主机
+console.log(myURL.hostname)//主机名
+console.log(myURL.port)//端口号
+console.log(myURL.pathname)//路径名
+console.log(myURL.search)//请求参数
+console.log(myURL.hash)//哈希值
+console.log(myURL.searchParams)//URL查询参数的URLSearchParams对象
+</code></pre>
+<p>结果<br><img src="https://img-blog.csdnimg.cn/20191005205456177.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODY2Nzc2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>URLSearchParams 类<br>URLSearchParams API 提供对 URL 查询部分的读写权限</p>
+<table>
+<thead>
+<tr>
+<th>方法/属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.append(name, value)</td>
+<td>在查询字符串中附加一个新的键值对</td>
+</tr>
+<tr>
+<td>.delete(name)</td>
+<td>删除所有键为name的键值对</td>
+</tr>
+<tr>
+<td>.get(name)</td>
+<td>返回键是name的第一个键值对的值。如果没有对应的键值对，则返回null</td>
+</tr>
+<tr>
+<td>.getAll(name)</td>
+<td>返回键是name的所有键值对的值，如果没有满足条件的键值对，则返回一个空的数组</td>
+</tr>
+<tr>
+<td>.has(name)</td>
+<td>如果存在至少一对键是 name 的键值对则返回 true</td>
+</tr>
+<tr>
+<td>.set(name, value)</td>
+<td>将 URLSearchParams 对象中与 name 相对应的值设置为 value。 如果已经存在键为 name 的键值对，则将第一对的值设为 value 并且删除其他对。 如果不存在，则将此键值对附加在查询字符串后</td>
+</tr>
+<tr>
+<td>.toString()</td>
+<td>返回查询参数序列化后的字符串，必要时存在百分号编码字符</td>
+</tr>
+<tr>
+<td>.entries()</td>
+<td>在查询中的每个键值对上返回一个 ES6 Iterator。 迭代器的每一项都是一个 JavaScript Array。 Array 的第一个项是键 name， Array 的第二个项是值 value</td>
+</tr>
+<tr>
+<td>.keys()</td>
+<td>在每一个键值对上返回一个键的 ES6 Iterator</td>
+</tr>
+<tr>
+<td>.values()</td>
+<td>在每一个键值对上返回一个值的 ES6 Iterator</td>
+</tr>
+</tbody>
+</table>
+<p>代码</p>
+<pre><code class="js">const myURL = new URL(&#39;https://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash&#39;)
+//.searchParams方法返回的已经是个URLSearchParams类
+console.log(myURL.searchParams.get(&#39;query&#39;))
+
+//构建一个URLSearchParams类
+let params = new URLSearchParams(&#39;a=1&amp;a=2&amp;b=3&#39;);
+
+params.append(&#39;c&#39;, &#39;3&#39;)
+console.log(params.toString())
+
+params.delete(&#39;b&#39;)
+console.log(params.toString())
+
+console.log(params.getAll(&#39;a&#39;))
+
+console.log(params.has(&#39;a&#39;))
+
+params.set(&#39;a&#39;, &#39;4&#39;)
+console.log(params.toString())
+
+for(let arr of params.entries()){
+    console.log(arr[0]+&#39;-&#39;+arr[1])
+}
+
+for (let name of params.keys()) {
+    console.log(name);
+}
+
+for (let value of params.values()) {
+    console.log(value);
+}
+</code></pre>
+<p>结果<br><img src="https://img-blog.csdnimg.cn/20191005213446733.png" alt="在这里插入图片描述"><br><a href="http://nodejs.cn/api/url.html" target="_blank" rel="noopener">更多请点击url官方文档</a></p>
+<h1 id="第三方模块使用实例"><a href="#第三方模块使用实例" class="headerlink" title="第三方模块使用实例"></a>第三方模块使用实例</h1><p>在<a href="https://www.npmjs.com/" target="_blank" rel="noopener">npm的官网</a>上，有许多第三方模块，这里以发送邮件的模块–nodemailer为例，讲述如何使用第三方模块<br>0.初始化npm项目<br>进入终端，执行<code>npm init</code><br><img src="https://img-blog.csdnimg.cn/20191008230716709.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODY2Nzc2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>输入命令后，分别填写项目信息，也可以不填，填写完成后输入yes。<br>1.首页搜索nodemailer<br><img src="https://img-blog.csdnimg.cn/20191008214526259.png" alt="在这里插入图片描述"><br>2.找到帮助文档或者官网<br><img src="https://img-blog.csdnimg.cn/20191008214629278.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODY2Nzc2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>3.安装模块</p>
+<pre><code>npm install nodemailer
+</code></pre><p>4.查看示例使用并且修改</p>
+<pre><code class="js">&#39;use strict&#39;;
+//引入node模块
+const nodemailer = require(&#39;nodemailer&#39;);
+//创建发送邮件的对象
+let transporter = nodemailer.createTransport({
+    host: &#39;smtp.qq.com&#39;, //发送方邮箱类型主机号，通过node包里的well-known里services.json查询
+    port: 465, //端口号
+    secure: true, // 465端口为true, 其他端口为false
+    /*通过well-known查询的qq邮箱信息
+        &quot;QQ&quot;: {
+        &quot;domains&quot;: [&quot;qq.com&quot;],
+        &quot;host&quot;: &quot;smtp.qq.com&quot;,
+        &quot;port&quot;: 465,
+        &quot;secure&quot;: true
+        },
+     */
+    auth: {
+        user: &#39;xxxxxxxxx@qq.com&#39;, //发送方邮箱地址
+        pass: &#39;xxxxxxxxx&#39; //mtp验证码
+    }
+    /*
+    qq邮箱mtp开启方法
+    设置-账户-POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务
+    开通POP3/SMTP服务，其他自行查找或百度
+    */
+});
+
+transporter.sendMail({
+    from: &#39;&quot;HelleWorld有限公司&quot; &lt;xxxxxx@qq.com&gt;&#39;, // 发件方地址
+    to: &#39;xxxxxxxx@qq.com,xxxxxxxx@qq.com&#39;, // 多个邮箱用逗号隔开
+    subject: &#39;验证码&#39;, // 主题
+    text: &#39;您的验证码信息是123456&#39;, // 文本信息
+    html: &#39;&lt;b&gt;您的验证码信息是123456&lt;/b&gt;&#39; // html信息,若使用text则html无效
+});
+</code></pre>
+<h1 id="简易爬虫"><a href="#简易爬虫" class="headerlink" title="简易爬虫"></a>简易爬虫</h1><p>通过<a href="http://nodejs.cn/api/http.html#http_http_get_options_callback" target="_blank" rel="noopener">get方法</a>获取目标网站，通过cheerio分析网站内容<br>1.数据处理部分</p>
+<pre><code class="js">/*基本构架*/
+//根据协议引入http或者https模块
+const http=require(&#39;http&#39;)
+let url=&#39;https://movie.douban.com/&#39;
+http.get(url,(res)=&gt;{
+    //数据分段，只有接受数据会触发data 事件chunk每次接受新的数据片段
+    res.on(&#39;data&#39;,chunk=&gt;{
+        console.log(&#39;数据传输&#39;)
+    })
+    //数据传输完成
+    res.on(&#39;end&#39;,()=&gt;{
+        console.log(&#39;数据传输完毕&#39;)
+    })
+}).on(&#39;error&#39;,(err)=&gt;{
+    console.log(&#39;请求错误&#39;)
+})
+</code></pre>
+<p>案例:将豆瓣电影的网页爬取下来存在一个html页面下</p>
+<pre><code class="js">const http = require(&#39;https&#39;)
+const fs = require(&#39;fs&#39;)
+let url = &#39;https://movie.douban.com/&#39;
+http.get(url, (res) =&gt; {
+    //数据分段，只有接受数据会触发data 事件chunk每次接受新的数据片段
+    let rawData = &#39;&#39;
+    res.on(&#39;data&#39;, chunk =&gt; {
+        rawData += chunk
+    })
+    //数据传输完成
+    res.on(&#39;end&#39;, () =&gt; {
+        fs.writeFile(&#39;./douban.html&#39;, rawData, (err) =&gt; {
+            if (err) throw err
+            console.log(&#39;文件写入成功&#39;)
+        })
+    })
+}).on(&#39;error&#39;, (err) =&gt; {
+    console.log(err)
+})
+</code></pre>
+<p>2.安全判断</p>
+<pre><code class="js">const http = require(&#39;https&#39;)
+const fs = require(&#39;fs&#39;)
+let url = &#39;https://movie.douban.com/&#39;
+http.get(url, (res) =&gt; {
+    //状态码
+    const { statusCode } = res
+    //const statusCode=res.statusCode
+    //请求头
+    const contentType = res.headers[&#39;content-type&#39;]
+    let error
+    if (statusCode !== 200) {
+        error = new Error(&#39;请求状态错误&#39;);
+    } else if (!/^ text\/html/.test(contentType)) {
+        //正则验证
+        error = new Error(&#39;请求类型错误&#39;);
+    }
+    if (error) {
+        console.log(error);
+        res.resume();//清除缓存
+        return false;
+    }
+}).on(&#39;error&#39;, (err) =&gt; {
+    console.log(err)
+})
+</code></pre>
+<p>3.分析网站内容<br>通过npm命令安装cheerio模块</p>
+<pre><code>npm install cheerio
+</code></pre><p>类似于jq选择器选择元素</p>
+<pre><code class="js">const cheerio = require(&#39;cheerio&#39;)
+const $ = cheerio.load(&#39;&lt;div class=&quot;box&quot;&gt;&lt;img src=&quot;pictruelink1&quot;&gt;&lt;img src=&quot;pictruelink2&quot;&gt;&lt;/div&gt;&#39;)
+// 类似于jq选择器的各种用法
+//$(&#39;.box&#39;).text(&#39;title&#39;)
+//$(&#39;.box&#39;).addClass(&#39;welcome&#39;)
+//console.log($.html())
+$(&#39;img&#39;).each((index,el)=&gt;{
+    console.log(index)
+    console.log($(el).attr(&#39;src&#39;))
+})
+</code></pre>
+<p>案例:将豆瓣电影所有图片地址爬取下来打印</p>
+<pre><code class="js">const http = require(&#39;https&#39;)
+const cheerio = require(&#39;cheerio&#39;)
+let url = &#39;https://movie.douban.com/&#39;
+http.get(url, (res) =&gt; {
+    //安全判断
+    //状态码
+    const { statusCode } = res
+    //const statusCode=res.statusCode
+    //请求头
+    const contentType = res.headers[&#39;content-type&#39;]
+    let error
+    if (statusCode !== 200) {
+        error = new Error(&#39;请求状态错误&#39;);
+    } else if (!/^text\/html/.test(contentType)) {
+        //正则验证
+        error = new Error(&#39;请求类型错误&#39;);
+    }
+    if (error) {
+        console.log(error);
+        res.resume();//清除缓存
+        return false;
+    }
+
+    //数据分段，只有接受数据会触发data 事件chunk每次接受新的数据片段
+    let rawData = &#39;&#39;
+    res.on(&#39;data&#39;, chunk =&gt; {
+        rawData += chunk
+    })
+    //数据传输完成 
+    res.on(&#39;end&#39;, () =&gt; {
+        const $ = cheerio.load(rawData)
+        $(&#39;img&#39;).each((index,el)=&gt;{
+            console.log($(el).attr(&#39;src&#39;))
+        })
+
+    })
+}).on(&#39;error&#39;, (err) =&gt; {
+    console.log(err)
+})
+</code></pre>
+<h1 id="express框架"><a href="#express框架" class="headerlink" title="express框架"></a>express框架</h1><p>安装方式</p>
+<pre><code>    npm install express
+</code></pre><p> HelloWorld</p>
+<pre><code class="js">const express=require(&#39;express&#39;)
+//express实例化
+const app=express()
+//get方法，接受前端的get请求
+app.get(&#39;/&#39;,(req,res)=&gt;{
+    res.send(&#39;Hello World&#39;)
+})
+//监听9501端口，运行服务器
+app.listen(9501,()=&gt;{
+    console.log(&#39;Server Start&#39;)
+})
+</code></pre>
+<p>在浏览器运行<a href="http://localhost:9501/开始服务器" target="_blank" rel="noopener">http://localhost:9501/开始服务器</a></p>
+<p>get接收参数<br>.query属性接收get方法传过来的数据</p>
+<pre><code class="js">const express=require(&#39;express&#39;)
+//express实例化
+const app=express()
+app.get(&#39;/login&#39;,(req,res)=&gt;{
+    //console.log(req.query)
+    //打印结果
+       //{ username: &#39;bob&#39;, password: &#39;123456&#39; }
+    let { username,password}=req.query
+    if(username===&#39;bob&#39;&amp;&amp;password===&#39;123456&#39;){
+        res.send({code:0,msg:&#39;login success&#39;})
+     }else{
+           res.send({code:-1,msg:&#39;login fail&#39;})
+    }
+})
+app.listen(9501,()=&gt;{
+    console.log(&#39;Server Start&#39;)
+})
+</code></pre>
+<p>在浏览器输入<a href="http://localhost:9501/login?username=bob&amp;password=123456开启服务器查看运行结果" target="_blank" rel="noopener">http://localhost:9501/login?username=bob&amp;password=123456开启服务器查看运行结果</a><br>post接收参数<br>post解析参数需要用到body-parser插件<br>安装方法</p>
+<pre><code>    npm install body-parser
+</code></pre><p>body属性接受post方法传递过来的参数</p>
+<pre><code class="js">const express=require(&#39;express&#39;)
+const bodypaser=require(&#39;body-parser&#39;)
+//express实例化
+const app=express()
+//app.use为中间件的使用方法，见下文
+//解析表单数据 application/x-www-form-urlencoded
+app.use(bodypaser.urlencoded({ extended: false }))
+//解析json格式数据 application/json
+app.use(bodypaser.json())
+app.post(&#39;/login&#39;,(req,res)=&gt;{
+    //console.log(req.body)
+       // { username: &#39;bob&#39;, password: &#39;123456&#39; }
+    let { username,password}=req.body
+    if(username===&#39;bob&#39;&amp;&amp;password===&#39;123456&#39;){
+        res.send({code:0,msg:&#39;login success&#39;})
+     }else{
+        res.send({code:-1,msg:&#39;login fail&#39;})
+    }
+})
+app.listen(9501,()=&gt;{
+    console.log(&#39;Server Start&#39;)
+})
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20191020212514881.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODY2Nzc2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>中间件<br>中间件就是在收到请求之后以及发出响应之前执行的一些函数，也可将其理解成一个拦截器。<br>原型为:</p>
+<blockquote>
+<p>app.use([path,] function [, function…])</p>
+</blockquote>
+<p>path如果为空，则默认为’/‘<br>中间件分以下三种<br>1.内置中间件<br>express.static用来处理静态资源，是express的内置中间件，具体用如下</p>
+<pre><code class="js">//在node里建立一个img文件夹放入pic.jpg
+const express=require(&#39;express&#39;)
+//引入path路径处理模块
+const path=require(&#39;path&#39;)
+const app=express()
+//使用内置中间件
+//__dirname为当前文件所在的目录，path中的join方法用于拼接路径
+//app.use(express.static(path.join(__dirname,&#39;./img&#39;)))
+//访问http://localhost:9595/pic.jpg即可查看图片
+app.use(&#39;/tupian&#39;,express.static(path.join(__dirname,&#39;./img&#39;)))
+//访问http://localhost:9595/tupian/pic.jpg即可查看图片
+app.listen(9595,()=&gt;{
+    console.log(&#39;Server Start&#39;)
+})
+</code></pre>
+<p>2.自定义中间件<br>自定义中间件的函数为function(req,res,next)，可以为全局的，可以为局部的。next表示是否继续往下执行<br>例:多端口验证token(这里token先用一个随机的字符串表示)</p>
+<pre><code class="js">const express=require(&#39;express&#39;)
+const app=express()
+//先进入中间件，判断传入的是否有一个参数为token有则往下执行，没有则返回结果，不往下执行
+app.use(&#39;/&#39;,(req,res,next)=&gt;{
+    let {token}=req.query
+    if(token){
+        next()
+    }else{
+        res.send(&#39;缺少token&#39;)
+    }
+})
+app.get(&#39;/test1&#39;,(req,res)=&gt;{
+    res.send(&#39;test1&#39;)
+})
+app.get(&#39;/test2&#39;,(req,res)=&gt;{
+    res.send(&#39;test2&#39;)
+})
+app.listen(9595,()=&gt;{
+    console.log(&#39;Server Start&#39;)
+})
+//访问http://localhost:9595/test1，显示缺少token
+//http://localhost:9595/test2?token=fsdklv，显示test2
+</code></pre>
+<p>例:路由的封装<br>express.Router()方法封装路由，封装路由可以让工程模块化。<br>建立一个router.js</p>
+<pre><code class="js">const express=require(&#39;express&#39;)
+//express.Router()方法封装路由
+const router=express.Router()
+router.get(&#39;/login&#39;,(req,res)=&gt;{
+    res.send(&quot;this is login&quot;)
+})
+router.get(&#39;/register&#39;,(req,res)=&gt;{
+    res.send(&quot;this is register&quot;)
+})
+//导出router
+module.exports=router
+</code></pre>
+<p>main.js</p>
+<pre><code class="js">const express=require(&#39;express&#39;)
+//引入路由
+const userRouter=require(&#39;./router&#39;)
+const app=express()
+//中间件，路径为/user进入封装好的路由
+app.use(&#39;/user&#39;,userRouter)
+app.listen(9595,()=&gt;{
+   console.log(&#39;Server Start&#39;)
+})
+//访问http://localhost:9595/user/login 显示this is login
+//访问http://localhost:9595/user/register,显示this is register
+</code></pre>
+<p>3.第三方中间件<br>上文中使用body-parser插件就是第三方中间件的用法</p>
+<h1 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h1><p>安装mysql依赖</p>
+<pre><code>npm install mysql
+</code></pre><p>数据库连接</p>
+<pre><code class="js">var mysql = require(&#39;mysql&#39;);
+var connection = mysql.createConnection({
+    host: &#39;localhost&#39;,//主机地址 （默认：localhost）
+    user: &#39;root&#39;,//用户名
+    password: &#39;logan123&#39;,//密码
+    database: &#39;testDB&#39;//数据库名
+});
+//连接数据库
+connection.connect((err) =&gt; {
+    if (err) throw err
+    console.log(&#39;数据库连接成功&#39;)
+});
+//断开数据库
+connection.end();
+</code></pre>
+<p><a href="https://img-blog.csdnimg.cn/20191031170408604.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODY2Nzc2,size_16,color_FFFFFF,t_70" target="_blank" rel="noopener">更多配置</a></p>
+<p>sql语句操作。<br>具体的sql语句的用法这边不做讲解，以查询数据和插入数据为例。<br>user数据表<br><img src="https://img-blog.csdnimg.cn/20191031171304134.png" alt="在这里插入图片描述"></p>
+<pre><code class="js">var mysql = require(&#39;mysql&#39;);
+var connection = mysql.createConnection({
+    host: &#39;localhost&#39;,//主机地址 （默认：localhost）
+    user: &#39;root&#39;,//用户名
+    password: &#39;******&#39;,//密码
+    database: &#39;testDB&#39;//数据库名
+});
+//连接数据库
+connection.connect((err) =&gt; {
+    if (err) throw err
+    console.log(&#39;数据库连接成功&#39;)
+});
+connection.query(&quot;select * from user&quot;,(err, result)=&gt;{
+    if(err) throw err
+    console.log(result)
+})
+connection.query(&quot;insert into user values(4,&#39;rose&#39;,&#39;789654&#39;)&quot;,(err, result)=&gt;{
+    if(err) throw err
+    console.log(result)
+})
+//断开数据库
+connection.end();
+</code></pre>
+<p>执行结果<br><img src="https://img-blog.csdnimg.cn/20191031172355949.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODY2Nzc2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>user表<br><img src="https://img-blog.csdnimg.cn/20191031172441166.png" alt="在这里插入图片描述"><br>防sql注入</p>
+<pre><code class="js">var mysql = require(&#39;mysql&#39;);
+var connection = mysql.createConnection({
+    host: &#39;localhost&#39;,//主机地址 （默认：localhost）
+    user: &#39;root&#39;,//用户名
+    password: &#39;******&#39;,//密码
+    database: &#39;testDB&#39;//数据库名
+});
+//连接数据库
+connection.connect((err) =&gt; {
+    if (err) throw err
+    console.log(&#39;数据库连接成功&#39;)
+});
+let addsql=&quot;insert into user values(?,?,?)&quot;
+let addSqlParams = [4, &#39;rose&#39;,&#39;789654&#39;];
+connection.query(addsql,addSqlParams,(err, result)=&gt;{
+    if(err) throw err
+    console.log(result)
+})
+//断开数据库
+connection.end();
+</code></pre>
+<h1 id="解决跨域"><a href="#解决跨域" class="headerlink" title="解决跨域"></a>解决跨域</h1><p> cors模块</p>
+<p> express中可用cors来解决跨域问题<br>安装方法</p>
+<pre><code>npm install cors
+</code></pre><p>使用</p>
+<pre><code class="js">const cors=require(&#39;cors&#39;)
+const app=express()
+app.use(cors())
+</code></pre>
+<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>安装multer模块</p>
+<pre><code>npm install multer
+</code></pre><p>配置storage(磁盘存储引擎)</p>
+<pre><code class="js">const storage = multer.diskStorage({
+    destination: (req, file, cb) =&gt; {
+        //cb第二个参数为存储的路径
+        cb(null, &#39;./upload&#39;)
+    },
+    filename: (req, file, cb) =&gt; {
+        //cb第二个参数为文件的名字
+        cb(null, file.originalname)
+    }
+})
+</code></pre>
+<p>实例化multer</p>
+<pre><code class="js">const upload = multer({
+    storage: storage
+});
+</code></pre>
+<p>post方法使用</p>
+<pre><code class="js">//.single为单个文件上传。键名为&#39;key&#39;
+app.post(&#39;/upload&#39;, upload.single(&#39;key&#39;), (req, res) =&gt; {
+    res.send(&#39;ok&#39;);
+})
+</code></pre>
+<p>优化代码<br>1.设置上传文件大小数量限制</p>
+<pre><code class="js">const uploadConfig = multer({
+    limits:{
+        fileSize: 50*1024,
+        //上传文件数
+        files: 5,
+    }
+ }
+//若文件大小不正确，则会抛出一个错误
+</code></pre>
+<p>2.设置文件上传类型</p>
+<pre><code class="js">const uploadConfig = multer({
+    limits:{
+        fileSize: 50*1024,
+        files: 5
+    },
+    fileFilter:(req,file,cb)=&gt;{
+        if(file.mimetype == &#39;image/jpeg&#39;||file.mimetype == &#39;image/jpg&#39;){
+            cb(null, true)
+        } else {
+            cb(null, false)
+            //抛出一个错误
+            cb(new Error())
+        }
+    }
+})
+//这里若文件类型不正确，则不会接收，但是不会抛出错误,所以需要手动抛出一个错误
+</code></pre>
+<p>完整代码</p>
+<pre><code class="js">const uploadConfig = multer({
+    limits: {
+        fileSize: 100*1024,
+        files: 5
+    },
+    storage: multer.diskStorage({
+        destination: (req, file, cb) =&gt; {
+            //cb第二个参数为存储的路径
+            cb(null, &#39;./upload&#39;)
+        },
+        filename: (req, file, cb) =&gt; {
+            //截取文件的后缀名
+            let exts = file.originalname.split(&#39;.&#39;)
+            //取最后一个元素
+            let ext = exts[exts.length - 1]
+            //文件名为时间戳加上4个随机数字
+            let filename = (new Date()).getTime()
+            let randnum = parseInt(1000 + Math.random() * 8999)
+            cb(null, `${filename}${randnum}.${ext}`)
+        }
+    }),
+    fileFilter: (req, file, cb) =&gt; {
+        if (file.mimetype == &#39;image/jpg&#39; || file.mimetype == &#39;image/jpeg&#39;) {
+            cb(null, true)
+        } else {
+            cb(null, false)
+            //抛出一个错误
+            cb(new Error())
+        }
+    }
+})
+
+let upload = uploadConfig.single(&#39;key&#39;)
+
+app.post(&#39;/upload&#39;, (req, res) =&gt; {
+    upload(req, res, (err) =&gt; {
+        if (err instanceof multer.MulterError) {
+            return res.send(err.message)
+        } else if (err) {
+            //此处接收文件类型限制抛出的错误
+            return res.send(&quot;type error&quot;)
+        }
+        res.send(&quot;sucess&quot;)
+    })
+})
+</code></pre>
+<h1 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h1><p>JSON Web Token基于Token的身份验证<br>安装</p>
+<pre><code>npm install jsonwebtoken
+</code></pre><p>生成token</p>
+<blockquote>
+<p>jwt.sign(payload, secretOrPrivateKey, [options, callback])</p>
+</blockquote>
+<p>payload-存储加密信息<br>secretOrPrivateKey-key,加密的钥匙<br>expiresIn-设置有效期，不带单位默认为秒。也可以是<a href="https://github.com/zeit/ms" target="_blank" rel="noopener">时间跨度字符串</a></p>
+<pre><code class="js">let payload={
+    us:&#39;test&#39;,
+    ps:&#39;123456&#39;
+}
+let secretOrPrivateKey=&quot;dsadas&quot;
+jwt.sign(payload,secretOrPrivateKey, {expiresIn:60*60},(err,token)=&gt;{
+    if(err) throw err
+    console.log(token)
+})
+</code></pre>
+<p>解密token</p>
+<blockquote>
+<p>jwt.verify(token, secretOrPublicKey, [options, callback])</p>
+</blockquote>
+<p>token-由jwt.sign生成的token<br>secretOrPrivateKey-加密的key，用于解析token的payload里的信息</p>
+<pre><code class="js">let token=&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cyI6IjEyMyIsInBzIjoiMTIzIiwiaWF0IjoxNTc1MzQyNjI4LCJleHAiOjE1NzU0MjkwMjh9.Fk7w2zeve5NNLYRJpt3ErIR0INvpFgpdi_4oNr9xju0&quot;
+let secretOrPrivateKey=&quot;dsadas&quot;
+jwt.verify(token, secretOrPrivateKey, (err, data) =&gt;{
+    if(err.name===&quot;TokenExpiredError&quot;){
+        console.log(&quot;token过期&quot;)
+    }else if(err.name===&quot;TokenExpiredError&quot;){
+        console.log(&quot;无效的token&quot;)
+    }
+    else{
+        console.log(data)
+    }
+})
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/zfb.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/wx.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div> -->
+        <!-- <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer> -->
+        <!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2019/10/21/qt/1571642507/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover02.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover02.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                NVM安装使用教程</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2019/09/09/qt/1567991928/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover01.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover01.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                谷歌浏览器安装vue-devtools</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "cizX6JyUwSbQtAaLDNFyacCr-gzGzoHsz",
+        appKey: "EW08QRUzIBGQ46OIYIjbnejX",
+        path: window.location.pathname,
+        placeholder: "虚空之席..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg" itemprop="image" alt="皇家小骑士" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">皇家小骑士</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <!-- <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div> -->
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 皇家小骑士<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2019</p>
+    </div>
+    <div class="footer-device">
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">皇家小骑士
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "",
+        "name": "",
+        "live": "close"
+      },
+      "windowheight": "fixed",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  } else {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "",
+        "name": "",
+        "live": "open"
+      },
+      "windowheight": "auto",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  }
+  /* ]]> */
+</script>
+<script>
+  $(document).ready(function () {
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc').offset().top - 95;
+      window.onscroll = function () {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+</script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <!-- <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div> -->
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">ロイヤルナイツ皇家小骑士</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="https://github.com/RoyalKnights" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://blog.csdn.net/qq_41866776" class="fa fa-code" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-home faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-tada" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/qd/">
+                  <i class="fa fa-html5" aria-hidden="true"></i>
+                  前端
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/ht/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  后台
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/fwd/">
+                  <i class="fa fa-server" aria-hidden="true"></i>
+                  服务端
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/qt/">
+                  <i class="fa fa-map-o" aria-hidden="true"></i>
+                  其他
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-shake" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-tada" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 royalknights</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id=""
+
+    server=""
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":145,"height":315},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
+</html>

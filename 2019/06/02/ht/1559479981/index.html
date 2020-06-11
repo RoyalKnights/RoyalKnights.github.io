@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">PHP进阶知识——PHP学习笔记（三） | RoyalKnights</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "ロイヤルナイツ皇家小骑士";
+  mashiro_option.author_name = "皇家小骑士";
+  mashiro_option.site_url = "";
+  mashiro_option.v_appId = "cizX6JyUwSbQtAaLDNFyacCr-gzGzoHsz";
+  mashiro_option.v_appKey = "EW08QRUzIBGQ46OIYIjbnejX";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/sy.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('IE浏览器还未适配哦');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+</head>
+</html>
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dim">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="">
+          <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>堵上皇家骑士的无上荣耀</p>
+        <div class="top-social_v2">
+          <li id="bg-pre" style="display: none;">
+            <img class="flipx">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/RoyalKnights" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://blog.csdn.net/qq_41866776" target="_blank" class="social-github" title="csdn">
+                    <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/csdn.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next" style="display: none;">
+            <img src="">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive" style="display: none;">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">ロイヤルナイツ</span>
+            <span class="shironeko">皇家小骑士</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <!-- <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div> -->
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-home faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-tada" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/qd/">
+                          <i class="fa fa-html5" aria-hidden="true"></i>
+                          前端
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/ht/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          后台
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/fwd/">
+                          <i class="fa fa-server" aria-hidden="true"></i>
+                          服务端
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/qt/">
+                          <i class="fa fa-map-o" aria-hidden="true"></i>
+                          其他
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-shake" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/donate/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-heart faa-tada" aria-hidden="true"></i>
+                    赞赏
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover03.jpg);" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover03.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      PHP进阶知识——PHP学习笔记（三）</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="">皇家小骑士</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2019-6-2<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h1><p>一个数组中的值可以是另一个数组，此数组的值也可以是一个数组，照此，可以创建二维或者三维数组</p>
+<pre><code class="php">&lt;?php
+    $arr1=array(
+        $arrch1=array(&#39;1&#39;,&#39;2&#39;,&#39;3&#39;),
+        $arrch2=array(&#39;1&#39;,&#39;2&#39;,&#39;3&#39;),
+        $arrch3=array(&#39;1&#39;,&#39;2&#39;,&#39;3&#39;)
+    );
+    print_r($arr1);//print_r array，将会按照一定格式显示键和元素
+?&gt; 
+</code></pre>
+<pre><code>输出结果:
+Array ( [0] =&gt; Array ( [0] =&gt; 1 [1] =&gt; 2 [2] =&gt; 3 ) [1] =&gt; Array ( [0] =&gt; 1 [1] =&gt; 2 [2] =&gt; 3 ) [2] =&gt; Array ( [0] =&gt; 1 [1] =&gt; 2 [2] =&gt; 3 ) )
+</code></pre><h1 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h1><p>date() 函数用于格式化时间/日期</p>
+<blockquote>
+<p>string date ( string \$format [, int \$timestamp ] )</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>format</td>
+<td>必需。规定时间戳的格式</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>必需。规定时间戳的格式</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="php">&lt;?php
+    echo date(&quot;y/m/d&quot;,strtotime(&quot;2012-5-6&quot;)).&quot;&lt;br /&gt;&quot;;//strtotime为获取时间戳
+    echo date(&quot;y-m-d&quot;).&quot;&lt;br /&gt;&quot;;//默认为当前时间戳 time()
+?&gt; 
+</code></pre>
+<pre><code>输出结果
+19/05/06
+19-06-02
+</code></pre><p><a href="http://www.w3school.com.cn/php/func_date_date.asp" target="_blank" rel="noopener">详细参数</a></p>
+<h1 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h1><h2 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h2><blockquote>
+<p>file_exists() </p>
+</blockquote>
+<p>检查文件和目录是否存在，返回布尔值</p>
+<blockquote>
+<p>fopen()</p>
+</blockquote>
+<p>第一个参数含有要打开的文件的名称，第二个参数规定了使用哪种模式来打开文件<br>无法打开文件则返回false</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>只读。在文件的开头开始</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>读/写。在文件的开头开始</td>
+</tr>
+<tr>
+<td>w</td>
+<td>只写。打开并清空文件的内容；如果文件不存在，则创建新文件</td>
+</tr>
+<tr>
+<td>w+</td>
+<td>读/写。打开并清空文件的内容；如果文件不存在，则创建新文件</td>
+</tr>
+<tr>
+<td>a</td>
+<td>追加。打开并向文件末尾进行写操作，如果文件不存在，则创建新文件</td>
+</tr>
+<tr>
+<td>a+</td>
+<td>读/追加。通过向文件末尾写内容，来保持文件内容</td>
+</tr>
+<tr>
+<td>x</td>
+<td>只写。创建新文件。如果文件已存在，则返回 FALSE 和一个错误</td>
+</tr>
+<tr>
+<td>x+</td>
+<td>读/写。创建新文件。如果文件已存在，则返回 FALSE 和一个错误</td>
+</tr>
+</tbody>
+</table>
+<h2 id="关闭文件"><a href="#关闭文件" class="headerlink" title="关闭文件"></a>关闭文件</h2><blockquote>
+<p>fclose()</p>
+</blockquote>
+<pre><code class="php">&lt;?php
+    $file = fopen(&quot;test.txt&quot;,&quot;r&quot;)
+    fclose($file);
+?&gt;
+</code></pre>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fgets()</td>
+<td>函数用于从文件中逐行读取文件,在调用该函数之后，文件指针会移动到下一行</td>
+</tr>
+<tr>
+<td>getc()</td>
+<td>函数用于从文件中逐字符地读取文件,在调用该函数之后，文件指针会移动到下一个字符</td>
+</tr>
+<tr>
+<td>feof()</td>
+<td>函数检测是否已到达文件末尾（EOF）,写状态下不可用</td>
+</tr>
+<tr>
+<td>fwrite()/fput()</td>
+<td>写入文件，可选length参数，出现错误返回false</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="php">&lt;?php
+    $filename=&quot;test.txt&quot;;
+    if(file_exists($filename)){
+        $file=fopen($filename,&#39;r+&#39;);
+        if($file){
+            fwrite($file,&quot;Hello World&quot;,5);
+        }else{
+            echo &quot;文件无法打开&quot;;
+        }
+    }else{
+        echo &quot;文件不存在&quot;;
+    }
+?&gt; 
+</code></pre>
+<p>test.txt内容：Hello</p>
+<p><a href="http://www.w3school.com.cn/php/php_ref_filesystem.asp" target="_blank" rel="noopener">Filesystem 函数</a></p>
+<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><h3 id="前端代码"><a href="#前端代码" class="headerlink" title="前端代码"></a>前端代码</h3><p>1.form的enctype 属性规定了在提交表单时要使用哪种内容类型。在表单需要二进制数据时，比如文件内容，请使用 “multipart/form-data”<br>2.input 标签的 type=”file” 属性规定了应该把输入作为文件来处理</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;form action=&quot;upload_file.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+            &lt;label&gt;文件名：&lt;/label&gt;
+               &lt;input type=&quot;file&quot; name=&quot;file&quot;&gt;&lt;br&gt;
+            &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
+        &lt;/form&gt;
+    &lt;/body&gt;
+&lt;/html
+</code></pre>
+<h3 id="后端代码"><a href="#后端代码" class="headerlink" title="后端代码"></a>后端代码</h3><p>1.创建上传脚本<br>全局数组 $_FILES，第一个参数是表单的 input name，第二个下标</p>
+<table>
+<thead>
+<tr>
+<th>全局数组</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$_FILES[“file”][“name”]</td>
+<td>上传文件的名称</td>
+</tr>
+<tr>
+<td>$_FILES[“file”][“type”]</td>
+<td>上传文件的类型</td>
+</tr>
+<tr>
+<td>$_FILES[“file”][“size”]</td>
+<td>上传文件的大小，以字节计</td>
+</tr>
+<tr>
+<td>$_FILES[“file”][“tmp_name”]</td>
+<td>存储在服务器的文件的临时副本的名称</td>
+</tr>
+<tr>
+<td>$_FILES[“file”][“error”]</td>
+<td>由文件上传导致的错误代码</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="php">if ($_FILES[&quot;file&quot;][&quot;error&quot;] &gt; 0)
+{
+    echo &quot;错误：&quot; . $_FILES[&quot;file&quot;][&quot;error&quot;] . &quot;&lt;br&gt;&quot;;
+}
+else
+{
+    echo &quot;上传文件名: &quot; . $_FILES[&quot;file&quot;][&quot;name&quot;] . &quot;&lt;br&gt;&quot;;
+    echo &quot;文件类型: &quot; . $_FILES[&quot;file&quot;][&quot;type&quot;] . &quot;&lt;br&gt;&quot;;
+    echo &quot;文件大小: &quot; . ($_FILES[&quot;file&quot;][&quot;size&quot;] / 1024) . &quot; kB&lt;br&gt;&quot;;
+    echo &quot;文件临时存储的位置: &quot; . $_FILES[&quot;file&quot;][&quot;tmp_name&quot;];
+}
+</code></pre>
+<p>2.上传限制<br>用户只能上传 .gif、.jpeg、.jpg、.png 文件，文件大小必须小于 200 kB</p>
+<pre><code class="php">$allowedExts = array(&quot;gif&quot;, &quot;jpeg&quot;, &quot;jpg&quot;, &quot;png&quot;);//设置允许上传的扩展名
+$temp = explode(&quot;.&quot;, $_FILES[&quot;file&quot;][&quot;name&quot;]);//explode()将字符串分解成数组
+$extension = end($temp);        // 获取文件后缀名
+if ((($_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/gif&quot;)
+|| ($_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/jpeg&quot;)
+|| ($_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/jpg&quot;)
+|| ($_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/pjpeg&quot;)
+|| ($_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/x-png&quot;)
+|| ($_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/png&quot;))//判断文件类型
+&amp;&amp;($_FILES[&quot;file&quot;][&quot;size&quot;] &lt; 204800)    // 判断文件大小
+&amp;&amp; in_array($extension, $allowedExts)) //判断拆分的字符串能不能在允许的字符串中找到
+{
+    /*上传代码*/
+}
+else
+{
+    echo &quot;非法的文件格式&quot;;
+}
+</code></pre>
+<p>3.保存上传文件<br>服务器的 PHP 临时文件夹中创建了一个被上传文件的临时副本，这个临时的副本文件会在脚本结束时消失。要保存被上传的文件，我们需要把它拷贝到另外的位置</p>
+<pre><code class="php">if (file_exists(&quot;upload/&quot; . $_FILES[&quot;file&quot;][&quot;name&quot;]))//检查文件是否存在
+{
+    echo $_FILES[&quot;file&quot;][&quot;name&quot;] . &quot; 文件已经存在。 &quot;;
+}
+else
+{
+    // 如果 upload 目录不存在该文件则将文件上传到 upload 目录下
+    move_uploaded_file($_FILES[&quot;file&quot;][&quot;tmp_name&quot;], &quot;upload/&quot; . $_FILES[&quot;file&quot;][&quot;name&quot;]);
+    echo &quot;文件存储在: &quot; . &quot;upload/&quot; . $_FILES[&quot;file&quot;][&quot;name&quot;];
+}
+</code></pre>
+<p>完整代码</p>
+<pre><code class="php">&lt;?php
+    // 允许上传的图片后缀
+    $allowedExts = array(&quot;gif&quot;, &quot;jpeg&quot;, &quot;jpg&quot;, &quot;png&quot;);
+    $temp = explode(&quot;.&quot;, $_FILES[&quot;file&quot;][&quot;name&quot;]);
+    $extension = end($temp);     // 获取文件后缀名
+    if ((($_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/gif&quot;)
+        ||($_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/jpeg&quot;)
+        ||($_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/jpg&quot;)
+        ||($_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/pjpeg&quot;)
+        ||($_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/x-png&quot;)
+        ||($_FILES[&quot;file&quot;][&quot;type&quot;] == &quot;image/png&quot;))
+        &amp;&amp;($_FILES[&quot;file&quot;][&quot;size&quot;] &lt; 204800)   // 小于 200 kb
+        &amp;&amp;in_array($extension, $allowedExts)){
+            if($_FILES[&quot;file&quot;][&quot;error&quot;] &gt; 0){
+                echo &quot;错误：: &quot; . $_FILES[&quot;file&quot;][&quot;error&quot;] . &quot;&lt;br&gt;&quot;;
+            }
+            else{
+                   echo &quot;上传文件名: &quot; . $_FILES[&quot;file&quot;][&quot;name&quot;] . &quot;&lt;br&gt;&quot;;
+                echo &quot;文件类型: &quot; . $_FILES[&quot;file&quot;][&quot;type&quot;] . &quot;&lt;br&gt;&quot;;
+                   echo &quot;文件大小: &quot; . ($_FILES[&quot;file&quot;][&quot;size&quot;] / 1024) . &quot; kB&lt;br&gt;&quot;;
+                   echo &quot;文件临时存储的位置: &quot; . $_FILES[&quot;file&quot;][&quot;tmp_name&quot;] . &quot;&lt;br&gt;&quot;;
+
+                // 判断当期目录下的 upload 目录是否存在该文件
+                // 如果没有 upload 目录，你需要创建它，upload 目录权限为 777
+                if (file_exists(&quot;upload/&quot; . $_FILES[&quot;file&quot;][&quot;name&quot;])){
+                       echo $_FILES[&quot;file&quot;][&quot;name&quot;] . &quot; 文件已经存在。 &quot;;
+                }
+                else{
+            // 如果 upload 目录不存在该文件则将文件上传到 upload 目录下
+                    move_uploaded_file($_FILES[&quot;file&quot;][&quot;tmp_name&quot;], &quot;upload/&quot; . $_FILES[&quot;file&quot;][&quot;name&quot;]);
+                       echo &quot;文件存储在: &quot; . &quot;upload/&quot; . $_FILES[&quot;file&quot;][&quot;name&quot;];
+                  }
+            }
+        }
+    else{
+        echo &quot;非法的文件格式&quot;;
+    }
+?&gt;
+</code></pre>
+<p>文件上传错误码</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>错误</th>
+<th>错误原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>UPLOAD_ERR_OK</td>
+<td>没有错误发生，文件上传成功</td>
+</tr>
+<tr>
+<td>1</td>
+<td>UPLOAD_ERR_INI_SIZE</td>
+<td>上传的文件超过了 php.ini 中 upload_max_filesize选项限制的值</td>
+</tr>
+<tr>
+<td>2</td>
+<td>UPLOAD_ERR_FORM_SIZE</td>
+<td>上传文件的大小超过了 HTML 表单中 MAX_FILE_SIZE 选项指定的值</td>
+</tr>
+<tr>
+<td>3</td>
+<td>UPLOAD_ERR_PARTIAL</td>
+<td>文件只有部分被上传</td>
+</tr>
+<tr>
+<td>4</td>
+<td>UPLOAD_ERR_NO_FILE</td>
+<td>没有文件被上传</td>
+</tr>
+<tr>
+<td>6</td>
+<td>UPLOAD_ERR_NO_TMP_DIR</td>
+<td>找不到临时文件夹</td>
+</tr>
+<tr>
+<td>7</td>
+<td>UPLOAD_ERR_CANT_WRITE</td>
+<td>文件写入失败</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://blog.csdn.net/qq_41866776/article/details/90742543" target="_blank" rel="noopener">文件上传中type值大全</a></p>
+<h1 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h1><h2 id="创建Cookie"><a href="#创建Cookie" class="headerlink" title="创建Cookie"></a>创建Cookie</h2><blockquote>
+<p>setcookie(name, value, expire, path, domain);</p>
+</blockquote>
+<p>setcookie() 函数必须位于 <html> 标签之前</html></p>
+<pre><code class="php">&lt;?php
+    $expire=time()+60*60*24;//设置过期时间1天
+    setcookie(&quot;name&quot;, &quot;bob&quot;, $expire);
+?&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;?php
+            if(isset($_COOKIE[&quot;name&quot;])){
+                   echo &quot;欢迎 &quot; . $_COOKIE[&quot;name&quot;] . &quot;!&lt;br&gt;&quot;;
+                   // 查看所有 cookie
+                print_r($_COOKIE);
+            }
+            else
+                echo &quot;普通访客!&lt;br&gt;&quot;;
+        ?&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<pre><code>输出结果
+欢迎 bob!
+Array ([name] =&gt; bob )
+</code></pre><h2 id="删除Cookie"><a href="#删除Cookie" class="headerlink" title="删除Cookie"></a>删除Cookie</h2><p>将时间设置过期</p>
+<pre><code class="php">&lt;?php
+setcookie(&quot;name&quot;, &quot;&quot;, time()-60);
+?&gt;
+</code></pre>
+<h1 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h1><p>1.工作机制：为每个访客创建一个唯一的 id (UID)，并基于这个 UID 来存储变量。UID 存储在 cookie 中，或者通过 URL 进行传导<br>2.会话信息是临时的，在用户离开网站后将被删除</p>
+<h2 id="创建-Session"><a href="#创建-Session" class="headerlink" title="创建 Session"></a>创建 Session</h2><blockquote>
+<p>session_start()</p>
+</blockquote>
+<p>session_start() 函数必须位于 <html> 标签之前</html></p>
+<h2 id="储存-Session"><a href="#储存-Session" class="headerlink" title="储存 Session"></a>储存 Session</h2><p>键值对形式存储</p>
+<blockquote>
+<p>$_SESSION[‘key’]=value</p>
+</blockquote>
+<h2 id="销毁-Session"><a href="#销毁-Session" class="headerlink" title="销毁 Session"></a>销毁 Session</h2><p>销毁指定键</p>
+<blockquote>
+<p>unset() </p>
+</blockquote>
+<p> 销毁所有Session</p>
+<blockquote>
+<p>session_destroy()</p>
+</blockquote>
+<h1 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a>电子邮件</h1><p>需要一个已安装且正在运行的邮件系统(如：sendmail、postfix、qmail等)。所用的程序通过在 php.ini 文件中的配置设置进行定义</p>
+<p><a href="https://www.runoob.com/php/php-ref-mail.html" target="_blank" rel="noopener">参考</a></p>
+<blockquote>
+<p>mail(to,subject,message,headers,parameters)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>to</td>
+<td>必需。规定 email 接收者</td>
+</tr>
+<tr>
+<td>subject</td>
+<td>必需。规定 email 的主题</td>
+</tr>
+<tr>
+<td>message</td>
+<td>必需。定义要发送的消息</td>
+</tr>
+<tr>
+<td>headers</td>
+<td>可选。规定附加的标题</td>
+</tr>
+<tr>
+<td>parameters</td>
+<td>可选。对邮件发送程序规定额外的参数</td>
+</tr>
+</tbody>
+</table>
+<h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><h2 id="json-encode"><a href="#json-encode" class="headerlink" title="json_encode"></a>json_encode</h2><p>json_encode() 用于对变量进行 JSON 编码，该函数如果执行成功返回 JSON 数据，否则返回 FALSE</p>
+<blockquote>
+<p>string json_encode ( \$value [, \$options = 0 ] )</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>要编码的值。该函数只对 UTF-8 编码的数据有效</td>
+</tr>
+<tr>
+<td>options</td>
+<td>由以下常量组成的二进制掩码：JSON_HEX_QUOT, JSON_HEX_TAG, JSON_HEX_AMP, JSON_HEX_APOS, JSON_NUMERIC_CHECK,JSON_PRETTY_PRINT, JSON_UNESCAPED_SLASHES, JSON_FORCE_OBJECT</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="php">&lt;?php
+   $arr = array(&#39;a&#39;=&gt;1,&#39;b&#39;=&gt;2,&#39;c&#39;=&gt;3);
+   echo json_encode($arr).&quot;&lt;br /&gt;&quot;;
+   class person{
+           public $name;
+           public $age;
+           public $sex;
+           public function __construct($name,$age,$sex){
+               $this-&gt;name=$name;
+               $this-&gt;age=$age;
+               $this-&gt;sex=$sex;
+           }
+   }
+   $p=new person(&quot;bob&quot;,18,&quot;man&quot;);
+   echo json_encode($p);
+?&gt;
+</code></pre>
+<pre><code>输出结果
+{&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3}
+{&quot;name&quot;:&quot;bob&quot;,&quot;age&quot;:18,&quot;sex&quot;:&quot;man&quot;}
+</code></pre><h2 id="json-decode"><a href="#json-decode" class="headerlink" title="json_decode"></a>json_decode</h2><p>json_decode() 函数用于对 JSON 格式的字符串进行解码，并转换为 PHP 变量</p>
+<blockquote>
+<p>json_decode ( \$ json_string [,\$assoc = false [, \$depth = 512 [, \$options = 0 ]]])</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>json_string</td>
+<td>待解码的 JSON 字符串，必须是 UTF-8 编码数</td>
+</tr>
+<tr>
+<td>assoc</td>
+<td>当该参数为 TRUE 时，将返回数组，FALSE 时返回对象</td>
+</tr>
+<tr>
+<td>depth</td>
+<td>整数类型的参数，它指定递归深</td>
+</tr>
+<tr>
+<td>options</td>
+<td>二进制掩码，目前只支持 JSON_BIGINT_AS_STRING</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="php">&lt;?php
+   $json = &#39;{&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3}&#39;;
+   var_dump(json_decode($json));
+   var_dump(json_decode($json, true));
+?&gt;
+</code></pre>
+<pre><code>输出结果
+object(stdClass)[1]
+public &#39;a&#39; =&gt; int 1
+public &#39;b&#39; =&gt; int 2
+public &#39;c&#39; =&gt; int 3
+
+array (size=3)
+ &#39;a&#39; =&gt; int 1
+ &#39;b&#39; =&gt; int 2
+ &#39;c&#39; =&gt; int 3
+</code></pre>
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/zfb.jpg"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/wx.jpg"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div> -->
+        <!-- <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer> -->
+        <!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2019/06/04/qt/1560958994/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover06.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover06.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                Wamp安装与配置</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2019/06/02/ht/1559448766/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover02.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/cover02.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                PHP表单处理——PHP学习笔记（二）</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "cizX6JyUwSbQtAaLDNFyacCr-gzGzoHsz",
+        appKey: "EW08QRUzIBGQ46OIYIjbnejX",
+        path: window.location.pathname,
+        placeholder: "虚空之席..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg" itemprop="image" alt="皇家小骑士" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author">皇家小骑士</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <!-- <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div> -->
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 皇家小骑士<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/svg/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2019</p>
+    </div>
+    <div class="footer-device">
+      <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">皇家小骑士
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "",
+        "name": "",
+        "live": "close"
+      },
+      "windowheight": "fixed",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  } else {
+    var Poi = {
+      "pjax": "1",
+      "movies": {
+        "url": "",
+        "name": "",
+        "live": "open"
+      },
+      "windowheight": "auto",
+      "codelamp": "close",
+      "ajaxurl": "",
+      "order": "asc",
+      "formpostion": "bottom"
+    };
+  }
+  /* ]]> */
+</script>
+<script>
+  $(document).ready(function () {
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc').offset().top - 95;
+      window.onscroll = function () {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+</script>
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <!-- <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div> -->
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/RoyalKnights/cdn/blog/img/avatar.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">ロイヤルナイツ皇家小骑士</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="https://github.com/RoyalKnights" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://blog.csdn.net/qq_41866776" class="fa fa-code" target="_blank" style="color: #dd4b39; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-home faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-tada" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/qd/">
+                  <i class="fa fa-html5" aria-hidden="true"></i>
+                  前端
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/ht/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  后台
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/fwd/">
+                  <i class="fa fa-server" aria-hidden="true"></i>
+                  服务端
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/qt/">
+                  <i class="fa fa-map-o" aria-hidden="true"></i>
+                  其他
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-shake" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/donate/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-heart faa-tada" aria-hidden="true"></i>
+            赞赏
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 royalknights</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id=""
+
+    server=""
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":145,"height":315},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.8},"log":false});</script></body>
+</html>
